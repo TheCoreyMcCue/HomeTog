@@ -1,0 +1,6 @@
+<div class="container text-center pt-3" id="booking-confirmation">
+  <h1>Congratulations!</h1>
+  <p>You requested <%= @reservation.portfolio.name %> for the <%= @reservation.date.strftime("%-d-%-m-%Y") %> </p>
+  <p>Waitig for <%= @reservation.portfolio.user.email %> to approve your request...</p>
+  <%= link_to "Continue looking?", portfolios_path, class: "btn btn-primary my-3" %>
+</div>
