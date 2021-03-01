@@ -1,1 +1,24 @@
 // Specific CSS for your home-page
+.home-page-banner {
+  height: 600px;
+}
+
+.card-content {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+}
+
+
+.card-content h2 {
+  font-size:1rem;
+  font-weight: 600;
+}
+
+.card-content p {
+  font-size:.9rem;
+}
+
+
