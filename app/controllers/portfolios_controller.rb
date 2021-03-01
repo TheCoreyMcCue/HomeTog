@@ -15,7 +15,7 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    # @reservations = Reservation.new
+    @reservations = Reservation.new
     @portfolio = Portfolio.find(params[:id])
     authorize(@portfolio)
   end
