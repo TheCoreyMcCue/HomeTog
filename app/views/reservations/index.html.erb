@@ -1,0 +1,13 @@
+<h1>Welcome <%= current_user.email %>! </h1>
+
+<div class="reservations">
+  <% @reservations.each do |res| %>
+    <p> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>.</p>
+    <p> <%= res.approved ? "Approved by #{res.portfolio.user.email}" : "Not approved by #{res.portfolio.user.email} yet" %></p>
+  <% end %>
+</div>
+
+<div class="own-portfolio">
+  <%#= @portfolio.name %>
+</div>
+

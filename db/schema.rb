@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_132333) do
+ActiveRecord::Schema.define(version: 2021_03_01_140110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 2021_03_01_132333) do
     t.index ["user_id"], name: "index_portfolios_on_user_id"
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "total_price"
+    t.datetime "date"
+    t.boolean "approved", default: false
+    t.bigint "portfolio_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["portfolio_id"], name: "index_reservations_on_portfolio_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,4 +52,6 @@ ActiveRecord::Schema.define(version: 2021_03_01_132333) do
   end
 
   add_foreign_key "portfolios", "users"
+  add_foreign_key "reservations", "portfolios"
+  add_foreign_key "reservations", "users"
 end
