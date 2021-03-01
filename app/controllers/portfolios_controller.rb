@@ -26,7 +26,7 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    @portfolio = Chair.new(portfolio_params)
+    @portfolio = Portfolio.new(portfolio_params)
     @user = current_user
     @portfolio.user = @user
     @portfolio.save
