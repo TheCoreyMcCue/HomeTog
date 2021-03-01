@@ -1,0 +1,16 @@
+<h1>Available photographers</h1>
+
+<div class="scroll col-12 col-md-8">
+    <% @portfolios.each do |portfolio| %>
+        <div class="card-product mt-3">
+          <div class="card-product-infos">
+            <div>
+              <h2><%= link_to portfolio.name.capitalize, portfolio_path(portfolio) %></h2>
+              <p> <%= portfolio.description&.truncate(155, separator: " ") %> </p>
+              <div class=""> € <%= portfolio.price %> <span class=""> /day</span></div>
+              <p>Listed by: <%= portfolio.user.email %></p>
+            </div>
+          </div>
+        </div>
+    <% end %>
+</div>
