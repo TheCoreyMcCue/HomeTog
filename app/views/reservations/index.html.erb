@@ -19,36 +19,54 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="reservations" id="reservations">
-        <h2 class="my-5">You requested the following Photographers:</h2>
+        <h2 class="my-5">You reservated the following Photographers:</h2>
         <%  if @reservations.blank? %>
-          <p>You have not requested any portfolio reservation yet.</p>
+        <p>You have not requested any portfolio reservation yet.</p>
         <% else %>
-          <% @reservations.each do |res| %>
-            <p> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>. (<%= res.approved ? "Approved by #{res.portfolio.user.email}" : "Not approved by #{res.portfolio.user.email} yet" %> )
-              <%= link_to "Cancel Reservation", reservation_path(res), method: :delete %></p>
-          <% end %>
+        <% @reservations.each do |res| %>
+
+        <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
+          <div class="card" id="index-cards">
+            <div class="card-product-infos">
+              <div class="d-flex">
+                <%= cl_image_tag res.portfolio.photo.key, height: 300, width: 400, crop: :fill %>
+                <div class="card-body">
+                  <h2 class="mb-3" id="index-photographer"><%= res.portfolio.name.capitalize %></h2>
+                  <p id="index-description"> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>. </p>
+                  <p id="index-description"> <%= res.approved ? "Approved by #{res.portfolio.user.email}" : "Not approved by #{res.portfolio.user.email} yet" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete %>) </p>
+                  <div id="index-price"> € <%= res.portfolio.price %> <span class=""> /day</span></div>
+                  <p id="index-user">Listed by: <%= res.portfolio.user.email %></p>
+                  <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-5" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
         <% end %>
       </div>
+      <% end %>
+
     </div>
 
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="requests text-center" id="requests">
+      <div class="requests " id="requests">
         <h2 class="my-5">Real Estate Agents requested your profile for te lowing dates:</h2>
         <% if @requests.blank? %>
-          <p>No one has requested your profile yet.</p>
+        <p>No one has requested your profile yet.</p>
         <% else %>
-          <% @requests.each do |request| %>
-            <div class="request-card text-left px-5 d-flex justify-content-between mb-5 align-items-center">
-              <p> <%= request.user.email %> requested your Portfolio on the <%= request.date %> </p>
-              <div id="approved-<%= request.id %>">
-                <%if !request.approved  %>
-                  <%= link_to "Approve this request",reservation_path(request), method: :patch, remote: true, class:"btn btn-primary"%>
-                <% else %>
-                  <p>You have approved this rent</p>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+        <% @requests.each do |request| %>
+        <div class="request-card text-left px-5 d-flex justify-content-between mb-5 align-items-center">
+          <p> <%= request.user.email %> requested your Portfolio on the <%= request.date %> </p>
+          <div id="approved-<%= request.id %>">
+            <%if !request.approved  %>
+            <%= link_to "Approve this request",reservation_path(request), method: :patch, remote: true, class:"btn btn-primary"%>
+            <% else %>
+            <p>Approved ✓</p>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
         <% end %>
       </div>
     </div>
@@ -57,17 +75,30 @@
       <div class="own-portfolio" id="own-portfolio">
         <h2 class="my-5">Your Portfolio</h2>
         <% if @portfolio.blank? %>
-          <p>You have not uploades a photographer portfolio yet.</p>
+        <p>You have not uploades a photographer portfolio yet.</p>
         <% else %>
-          <% @portfolio.each do |portfolio| %>
-            <%= portfolio.description %>
-          <% end %>
+        <% @portfolio.each do |portfolio| %>
+
+          <div class="card" id="index-cards">
+          <div class="card-product-infos">
+            <div class="d-flex">
+              <%= cl_image_tag portfolio.photo.key, height: 300, width: 400, crop: :fill %>
+              <div class="card-body">
+                <h2 class="mb-5" id="index-photographer"><%= portfolio.name.capitalize %></h2>
+                <div id="index-price"> € <%= portfolio.price %> <span class=""> /day</span></div>
+                <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-5" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% end %>
         <% end %>
       </div>
     </div>
 
     <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tab">
-      <h2 class="my-5">Your Favorites</h2>
+      <h2 class="my-5">You marked the following Portfolios as your Favorites:</h2>
     </div>
 
   </div>

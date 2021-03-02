@@ -1,7 +1,7 @@
 <h1><%= @portfolio.name %> </h1>
 <p>Located in <%= @portfolio.location %>
 
-<div class="container">
+<div class="reservation-form">
   <%= simple_form_for ([@portfolio, @reservations]) do |f| %>
     <%= f.input :date, as: :date %>
     <%= f.input :total_price, disabled: true %>
