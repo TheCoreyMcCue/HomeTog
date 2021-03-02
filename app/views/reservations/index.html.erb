@@ -1,46 +1,78 @@
 <div class="container">
-  <h1>Welcome <%= current_user.email %>! </h1>
+  <h1 class="my-5">Welcome <%= current_user.email %>! </h1>
 
-  <div class="reservations">
-    <h2 class="mt-3">Your Reservations</h2>
-    <%  if @reservations.blank? %>
-      <p>You have not requested any portfolio reservation yet.</p>
-    <% else %>
-      <% @reservations.each do |res| %>
-        <p> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>. (<%= res.approved ? "Approved by #{res.portfolio.user.email}" : "Not approved by #{res.portfolio.user.email} yet" %> )
-          <%= link_to "Cancel Reservation", reservation_path(res), method: :delete %></p>
-      <% end %>
-    <% end %>
-  </div>
 
-  <div class="requests">
-    <h2 class="mt-3">Your Requests</h2>
-    <% if @requests.blank? %>
-      <p>No one has requested your profile yet.</p>
-    <% else %>
-      <% @requests.each do |request| %>
-        <div class="request-card">
-          <p> <%= request.user.email %> requested your Portfolio on the <%= request.date %> </p>
-          <div id="approved-<%= request.id %>">
-            <%if !request.approved  %>
-              <%= link_to "Approve this request.",reservation_path(request), method: :patch, remote: true %>
-            <% else %>
-              <p>You have approved this rent</p>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Reservations</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Requests</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Portfolio</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="favorites-tab" data-toggle="tab" href="#favorites" role="tab" aria-controls="favorites" aria-selected="false">Favorites</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="reservations" id="reservations">
+        <h2 class="my-5">You requested the following Photographers:</h2>
+        <%  if @reservations.blank? %>
+          <p>You have not requested any portfolio reservation yet.</p>
+        <% else %>
+          <% @reservations.each do |res| %>
+            <p> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>. (<%= res.approved ? "Approved by #{res.portfolio.user.email}" : "Not approved by #{res.portfolio.user.email} yet" %> )
+              <%= link_to "Cancel Reservation", reservation_path(res), method: :delete %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-  <div class="own-portfolio">
-    <h2 class="mt-3">Your Portfolio</h2>
-    <% if @portfolio.blank? %>
-      <p>You have not uploades a photographer portfolio yet.</p>
-    <% else %>
-      <% @portfolio.each do |portfolio| %>
-        <%= portfolio.description %>
-      <% end %>
-    <% end %>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="requests text-center" id="requests">
+        <h2 class="my-5">Real Estate Agents requested your profile for te lowing dates:</h2>
+        <% if @requests.blank? %>
+          <p>No one has requested your profile yet.</p>
+        <% else %>
+          <% @requests.each do |request| %>
+            <div class="request-card text-left px-5 d-flex justify-content-between mb-5 align-items-center">
+              <p> <%= request.user.email %> requested your Portfolio on the <%= request.date %> </p>
+              <div id="approved-<%= request.id %>">
+                <%if !request.approved  %>
+                  <%= link_to "Approve this request",reservation_path(request), method: :patch, remote: true, class:"btn btn-primary"%>
+                <% else %>
+                  <p>You have approved this rent</p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <div class="own-portfolio" id="own-portfolio">
+        <h2 class="my-5">Your Portfolio</h2>
+        <% if @portfolio.blank? %>
+          <p>You have not uploades a photographer portfolio yet.</p>
+        <% else %>
+          <% @portfolio.each do |portfolio| %>
+            <%= portfolio.description %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tab">
+      <h2 class="my-5">Your Favorites</h2>
+    </div>
+
   </div>
 </div>
+
+
+
+
