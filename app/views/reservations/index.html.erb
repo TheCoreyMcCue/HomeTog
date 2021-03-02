@@ -1,13 +1,46 @@
-<h1>Welcome <%= current_user.email %>! </h1>
+<div class="container">
+  <h1>Welcome <%= current_user.email %>! </h1>
 
-<div class="reservations">
-  <% @reservations.each do |res| %>
-    <p> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>.</p>
-    <p> <%= res.approved ? "Approved by #{res.portfolio.user.email}" : "Not approved by #{res.portfolio.user.email} yet" %></p>
-  <% end %>
+  <div class="reservations">
+    <h2 class="mt-3">Your Reservations</h2>
+    <%  if @reservations.blank? %>
+      <p>You have not requested any portfolio reservation yet.</p>
+    <% else %>
+      <% @reservations.each do |res| %>
+        <p> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>. (<%= res.approved ? "Approved by #{res.portfolio.user.email}" : "Not approved by #{res.portfolio.user.email} yet" %> )
+          <%= link_to "Cancel Reservation", reservation_path(res), method: :delete %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="requests">
+    <h2 class="mt-3">Your Requests</h2>
+    <% if @requests.blank? %>
+      <p>No one has requested your profile yet.</p>
+    <% else %>
+      <% @requests.each do |request| %>
+        <div class="request-card">
+          <p> <%= request.user.email %> requested your Portfolio on the <%= request.date %> </p>
+          <div id="approved-<%= request.id %>">
+            <%if !request.approved  %>
+              <%= link_to "Approve this request.",reservation_path(request), method: :patch, remote: true %>
+            <% else %>
+              <p>You have approved this rent</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="own-portfolio">
+    <h2 class="mt-3">Your Portfolio</h2>
+    <% if @portfolio.blank? %>
+      <p>You have not uploades a photographer portfolio yet.</p>
+    <% else %>
+      <% @portfolio.each do |portfolio| %>
+        <%= portfolio.description %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-
-<div class="own-portfolio">
-  <%#= @portfolio.name %>
-</div>
-
