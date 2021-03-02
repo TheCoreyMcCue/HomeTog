@@ -1,52 +1,122 @@
 
 <div class="banner home-page-banner d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(' <%= image_path 'sky-house.jpg' %> ');">
   <div class="container">
-    <h1 class="h1-mobile">Listing a home or apartment? Let's find you the perfect photographer!</h1>
-
+    <h1 class="h1-mobile">
+      Listing a home or apartment? Let's find you the perfect photographer!
+    </h1>
     <div class="mt-3 d-flex justify-content-center w-100 ">
       <%= simple_form_for :search, url: portfolios_path, method: :get do |f| %>
-          <div class="form-row">
-            <div class="col-8 input-width">
-              <%= f.input :location, input_html: {type: "text", class: "form-control input-border", placeholder: "Location"}, label: false, wrapper: false %>
-            </div>
-            <div class="col-4">
-              <%= f.submit "Search", class:"btn btn-primary w-100 custom-btn-home-page" %>
-            </div>
+        <div class="form-row">
+          <div class="col-8 input-width">
+            <%= f.input :location, input_html: {type: "text", class: "form-control input-border", placeholder: "Location"}, label: false, wrapper: false %>
           </div>
-        <% end %>
+          <div class="col-4">
+            <%= f.submit "Search", class:"btn btn-primary w-100 custom-btn-home-page" %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <h2 class="text-center my-5">How it Works</h2>
-  <div class="cards-wrapper d-flex justify-content-center ">
-    <div class="card-content">
-      <%= image_tag 'loupe.png', class: "card-image" %>
-      <h3 class="mt-3">Easily Search</h3>
-      <p class="text-center">Search for the best real estate
-         photographers in your area</p>
-    </div>
+  <div class="container">
+    <h2 class="text-center my-5">How it Works</h2>
+    <div class="cards-wrapper d-flex justify-content-center ">
+      <div class="card-content">
+        <%= image_tag 'loupe.png', class: "card-image" %>
+        <h3 class="mt-3">Easily Search</h3>
+        <p class="text-center">Search for the best real estate
+          photographers in your area</p>
+      </div>
 
-    <div class="card-content">
-      <%= image_tag 'choose.png', class: "card-image" %>
-      <h3 class="mt-3">Compare</h2>
-      <p class="text-center">Compare all the
-         available photograpers  based
-         on your wants and needs.</p>
-    </div>
+      <div class="card-content">
+        <%= image_tag 'choose.png', class: "card-image" %>
+        <h3 class="mt-3">Compare</h2>
+        <p class="text-center">Compare all the
+          available photograpers  based
+          on your wants and needs.</p>
+      </div>
 
-    <div class="card-content">
-      <%= image_tag 'calendar.png', class: "card-image" %>
-      <h3 class="mt-3">Book</h2>
-      <p class="text-center">Book a photographer
-         in 3 simple steps.</p>
+      <div class="card-content">
+        <%= image_tag 'calendar.png', class: "card-image" %>
+        <h3 class="mt-3">Book</h2>
+        <p class="text-center">Book a photographer
+          in 3 simple steps.</p>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container">
+<div class="container testimony-container">
   <h2 class="text-center my-5">Testimonials</h2>
+  <div class="testimony-wrapper d-flex justify-content-center">
 
+    <div>
+      <div class="testimony-content">
+        <div class="testimony-card d-flex">
+          <%= image_tag 'photographer-one.jpg', class: "testimony-avatar" %>
+          <div class="ml-3 mt-3">
+          <div class="d-flex flex-direction-column">
+            This website helped me a lot with finding clients.This website helped me a lot with finding clients.
+          </div>
+          <p class="d-flex flex-row-reverse testimony-author">
+            Edson Mclaren
+          </p>
+        </div>
+      </div>
 
+      <div class="testimony-card mt-3 d-flex">
+        <%= image_tag 'photographer-two.jpg', class: "testimony-avatar" %>
+          <div class="pl-3 mt-3">
+            <div>
+              This website helped me a lot with finding clients.This website helped me a lot with finding clients.
+            </div>
+            <p class="d-flex flex-row-reverse testimony-author">
+              Will Smith
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ml-3">
+      <div class="testimony-content">
+        <div class="testimony-card d-flex">
+          <%= image_tag 'photographer-one.jpg', class: "testimony-avatar" %>
+          <div class="ml-3 mt-3">
+          <div>
+            This website helped me a lot with finding clients.This website helped me a lot with finding clients.
+          </div>
+          <p class="d-flex flex-row-reverse testimony-author">
+            Edson Mclaren
+          </p>
+        </div>
+      </div>
+
+      <div class="testimony-card mt-3 d-flex">
+        <%= image_tag 'photographer-two.jpg', class: "testimony-avatar" %>
+          <div class="ml-3 mt-3">
+            <div>
+              This website helped me a lot with finding clients.This website helped me a lot with finding clients.
+            </div>
+            <p class="d-flex flex-row-reverse testimony-author">
+              Will Smith
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
