@@ -1,24 +1,60 @@
 // Specific CSS for your home-page
 .home-page-banner {
-  height: 600px;
+  height:550px;
+}
+
+h2 {
+  font-size: 32px;
 }
 
 .card-content {
-  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content:center;
   align-items: center;
+  flex:1;
 }
 
-
-.card-content h2 {
-  font-size:1rem;
+.card-content h3 {
+  font-size:16px;
   font-weight: 600;
 }
 
 .card-content p {
   font-size:.9rem;
+  margin: 0px 85px;
+}
+
+.card-image {
+  width: 60px;
+  height: auto;
+}
+
+.input-width {
+  width: 600px;
+}
+
+.custom-btn-home-page {
+  margin-left: -10px;
+
+}
+
+
+
+@media (max-width: 576px){
+  .h1-mobile {
+    font-size: 24px!important;
+  }
+  .input-width {
+    width: 150px;
+  }
+  .search-mobile-btn {
+    font-size: 14px;
+    pading: 20px;
+    margin-right: 40px;
+
+  }
+
 }
 
 
