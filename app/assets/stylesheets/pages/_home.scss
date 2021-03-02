@@ -65,6 +65,7 @@ h2 {
   .h1-mobile {
     font-size: 24px!important;
   }
+
   .input-width {
     width: 200px;
   }
@@ -75,12 +76,29 @@ h2 {
     padding: 8px 20px;
     margin-right: 40px;
   }
+
   .cards-wrapper {
     flex-direction:column;
   }
 
   .card-content {
     margin-top: 40px;
+  }
+
+  .testimony-wrapper {
+    flex-direction: column;
+  }
+
+  .testimony-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimony-avatar {
+    width: 80px;
+    height: 70px;
+    border-radius: 50%;
+    object-item: cover;
   }
 
 }
