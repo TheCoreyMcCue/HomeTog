@@ -1,17 +1,19 @@
 <div class="container ml-1">
   <div class="row">
-    <h1>Available photographers</h1>
 
     <div class="scroll col-12 col-md-8">
       <% @portfolios.each do |portfolio| %>
-        <div class="card-product mt-3">
+        <div class="card my-2">
           <div class="card-product-infos">
             <div class="d-flex">
               <%= cl_image_tag portfolio.photo.key, height: 300, width: 400, crop: :fill %>
-              <h2><%= link_to portfolio.name.capitalize, portfolio_path(portfolio) %></h2>
-              <p> <%= portfolio.description&.truncate(155, separator: " ") %> </p>
-              <div class=""> € <%= portfolio.price %> <span class=""> /day</span></div>
-              <p>Listed by: <%= portfolio.user.email %></p>
+              <div class="card-body">
+                <h2><%= link_to portfolio.name.capitalize, portfolio_path(portfolio) %></h2>
+                <p> <%= portfolio.description&.truncate(155, separator: " ") %> </p>
+                <div class=""> € <%= portfolio.price %> <span class=""> /day</span></div>
+                <p>Listed by: <%= portfolio.user.email %></p>
+                <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-5" %>
+              </div>
             </div>
           </div>
         </div>
