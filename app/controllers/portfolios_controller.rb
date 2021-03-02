@@ -1,4 +1,5 @@
 class PortfoliosController < ApplicationController
+  before_action :set_portfolio, only: %i[show edit update destroy]
   def index
     # @portfolios = Portfolio.all
     @portfolios = policy_scope(Portfolio).order(created_at: :desc)
@@ -38,9 +39,25 @@ class PortfoliosController < ApplicationController
     authorize(@portfolio)
   end
 
+  def update
+    authorize(@portfolio)
+    @portfolio.update(portfolio_params)
+    redirect_to portfolio_path(@portfolio)
+  end
+
+  def destroy
+    authorize(@portfolio)
+    @portfolio.destroy
+    redirect_to portfolios_url
+  end
+
   private
 
   def portfolio_params
     params.require(:portfolio).permit(:name, :location, :description, :price, :photo)
+  end
+
+  def set_portfolio
+    @portfolio = Portfolio.find(params[:id])
   end
 end
