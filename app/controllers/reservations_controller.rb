@@ -3,6 +3,7 @@ class ReservationsController < ApplicationController
     @reservations = policy_scope(Reservation).where(user: current_user).order(created_at: :desc)
     @requests = Reservation.joins(:portfolio).where(portfolio:{user: current_user})
     @portfolio = Portfolio.where(user_id: current_user.id)
+    @favorites = Favorite.where(user_id: current_user.id)
   end
 
   def show
