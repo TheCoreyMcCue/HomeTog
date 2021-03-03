@@ -8,8 +8,8 @@
               <div class="d-flex">
                 <%= cl_image_tag portfolio.photo.key, height: 250, width: 200, crop: :fill %>
                 <div class="card-body">
-                  <h2 class="mb-3" id="index-photographer"><%= portfolio.name.capitalize %></h2>
-                  <p id="index-description"> <%= portfolio.description&.truncate(155, separator: " ") %> </p>
+                  <h2 class="mb-3" id="index-photographer"><%= portfolio.name %></h2>
+                  <p id="index-description"> <%= portfolio.description&.truncate(60, separator: " ") %> </p>
                   <div id="index-price"> € <%= portfolio.price %> <span class=""> /day</span></div>
                   <p id="index-user">Listed by: <%= portfolio.user.email %></p>
                   <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-3" %>
@@ -21,23 +21,19 @@
       <% end %>
     </div>
     <div class="border-left col-md-6" id="portfolio-preview">
-      <!-- <h2>Joe McPictureguy</h2> -->
       <section>
         <% @portfolios.each do |portfolio| %>
           <div id="<%= portfolio.id %>" class="tabcontent">
             <div>
-              <h2 class="mb-5" id="preview-header"> <%= portfolio.name %> </h2>
+              <h2 class="mb-3" id="preview-header"> <%= portfolio.name %> </h2>
               <%#= image_tag 'avatar-pic.png', width: '100px', height: 'auto', class: "pt-3" %>
             </div>
-            <p><% portfolio.description %></p>
+            <p id="index-description"><%= portfolio.description&.truncate(140, separator: " ") %></p>
             <%= cl_image_tag portfolio.photo.key, height: 550, width: 600, crop: :fill %>
             <%= link_to "Book This Photographer!", portfolio_path(portfolio), class: "btn btn-primary mt-3 mx-5 px-5 mt-5" %>
           </div>
         <% end %>
-
       </section>
-      <!-- <button type="button" class="btn btn-primary mt-3 mx-5 px-5">Book This Photographer!</button> -->
-
     </div>
   </div>
 </div>
