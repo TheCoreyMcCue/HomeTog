@@ -9,6 +9,9 @@
 .card-product-infos {
   box-shadow: 2px 2px 2px gray;
 }
+.card-product-infos:hover {
+  box-shadow: 4px 4px 4px gray;
+}
 
 .index-cards {
   text-decoration: none;
@@ -36,6 +39,23 @@
   color: gray;
 }
 
+#index-about{
+  font-size: 16px;
+  color: black;
+  font-family: Nunito;
+}
+
 #portfolio-preview {
-  word-wrap: break-word;
+  text-align: center;
+  color: #355070;
+  font-family: Work Sans;
+}
+
+.tabcontent {
+  display: none;
+    &:first-child { display: block; }
+}
+
+#preview-header {
+
 }
