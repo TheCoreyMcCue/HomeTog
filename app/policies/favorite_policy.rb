@@ -10,7 +10,7 @@ class FavoritePolicy < ApplicationPolicy
   end
 
   def destroy?
-    #record is instance of favorite and user is the current user
+    # record is instance of favorite and user is the current user
     record.user == user
   end
 end

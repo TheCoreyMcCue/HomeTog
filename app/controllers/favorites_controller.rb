@@ -1,6 +1,4 @@
 class FavoritesController < ApplicationController
-
-
   def create
     @favorite = Favorite.new
     @favorite.user = current_user
@@ -8,7 +6,6 @@ class FavoritesController < ApplicationController
     authorize(@favorite)
     @favorite.save
     redirect_to portfolios_path
-
   end
 
   def destroy

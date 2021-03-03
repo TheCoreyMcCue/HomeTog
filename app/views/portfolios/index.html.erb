@@ -16,23 +16,8 @@
                   <h2 class="mb-5" id="index-photographer"><%= portfolio.name.capitalize %></h2>
 
 
-                  <% if portfolio.favorited?(current_user) %>
+                 <!--  <p id="index-description"> <%= portfolio.description&.truncate(155, separator: " ") %> </p> -->
 
-
-                    <%= link_to favorite_path(portfolio.favorited?(current_user)), method: :delete do  %>
-                      <i class="fas fa-heart" style="color: red"></i>
-                    <% end %>
-                  <% else %>
-                    <%= link_to(portfolio_favorites_path(portfolio), method: :post) do %>
-                      <i class="far fa-heart" style="color: black"></i>
-                    <% end %>
-                  <% end %>
-
-
-                  <p id="index-description"> <%= portfolio.description&.truncate(155, separator: " ") %> </p>
-
-                  <h2 class="mb-3" id="index-photographer"><%= portfolio.name %></h2>
-                  <p id="index-description"> <%= portfolio.description&.truncate(60, separator: " ") %> </p>
 
                   <div id="index-price"> € <%= portfolio.price %> <span class=""> /day</span></div>
                   <p id="index-user">Listed by: <%= portfolio.user.email %></p>
@@ -48,9 +33,17 @@
       <section>
         <% @portfolios.each do |portfolio| %>
           <div id="<%= portfolio.id %>" class="tabcontent">
-            <%= portfolio.id %>
             <div>
               <h2 class="mb-3" id="preview-header"> <%= portfolio.name %> </h2>
+              <% if portfolio.favorited?(current_user) %>
+                    <%= link_to favorite_path(portfolio.favorited?(current_user)), method: :delete do  %>
+                      <i class="fas fa-heart mr-3" style="color: red"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to(portfolio_favorites_path(portfolio), method: :post) do %>
+                      <i class="far fa-heart mr-3" style="color: black"></i>
+                    <% end %>
+                  <% end %>
               <%#= image_tag 'avatar-pic.png', width: '100px', height: 'auto', class: "pt-3" %>
             </div>
             <p id="index-description"><%= portfolio.description&.truncate(140, separator: " ") %></p>
