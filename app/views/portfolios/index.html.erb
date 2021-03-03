@@ -17,8 +17,6 @@
 
 
                   <% if portfolio.favorited?(current_user) %>
-
-
                     <%= link_to favorite_path(portfolio.favorited?(current_user)), method: :delete do  %>
                       <i class="fas fa-heart" style="color: red"></i>
                     <% end %>
@@ -29,10 +27,8 @@
                   <% end %>
 
 
-                  <p id="index-description"> <%= portfolio.description&.truncate(155, separator: " ") %> </p>
+                 <!--  <p id="index-description"> <%= portfolio.description&.truncate(155, separator: " ") %> </p> -->
 
-                  <h2 class="mb-3" id="index-photographer"><%= portfolio.name %></h2>
-                  <p id="index-description"> <%= portfolio.description&.truncate(60, separator: " ") %> </p>
 
                   <div id="index-price"> € <%= portfolio.price %> <span class=""> /day</span></div>
                   <p id="index-user">Listed by: <%= portfolio.user.email %></p>

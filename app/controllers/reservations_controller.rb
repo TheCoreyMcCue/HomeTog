@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   def index
     @reservations = policy_scope(Reservation).where(user: current_user).order(created_at: :desc)
-    @requests = Reservation.joins(:portfolio).where(portfolio:{user: current_user})
+    @requests = Reservation.joins(:portfolio).where(portfolio: { user: current_user })
     @portfolio = Portfolio.where(user_id: current_user.id)
     @favorites = Favorite.where(user_id: current_user.id)
   end
@@ -43,5 +43,4 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:user_id, :portfolio_id, :date, :total_price, :approved)
   end
-
 end

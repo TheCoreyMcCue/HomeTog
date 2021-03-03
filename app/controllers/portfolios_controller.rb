@@ -14,7 +14,6 @@ class PortfoliosController < ApplicationController
     #   lng: portfolio.longitude
     # }
     @favorite = Favorite.new
-
   end
 
   def show
