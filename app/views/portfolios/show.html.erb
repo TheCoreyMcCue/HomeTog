@@ -12,12 +12,12 @@
 
   <%= cl_image_tag @portfolio.photo.key, class: "show-page-image-design" %>
 
-  <div class="d-flex mt-4">
+  <div class="d-flex mt-4 show-card-wrapper">
     <div class="content-wrapper">
       <div class="d-flex flex-column">
-        <div class="d-flex">
-          <%= image_tag 'photographer-one.jpg', class: "testimony-avatar" %>
-          <div class="protographer-name-location-wrapper">
+        <div class="d-flex ">
+          <%= image_tag 'photographer-one.jpg', class: "testimony-avatar show-page-avatar" %>
+          <div class="photographer-name-location-wrapper">
             <h2 class="pl-3 pt-2">
               <%= @portfolio.name %>
             </h2>
@@ -26,7 +26,11 @@
             </p>
           </div>
         </div>
-        <p class="mt-3"><%= @portfolio.description&.truncate(400, separator: " ") %></p>
+        <div class="description-container">
+          <p class="mt-3">
+          <%= @portfolio.description&.truncate(450, separator: " ") %>
+        </p>
+        </div>
       </div>
 
     </div>
@@ -39,6 +43,15 @@
       <% end %>
     </div>
   </div>
+
+ <!--  <div class="chat-wrapper mt-5">
+    <div class="chatbox">
+      <form action="#" method="post">
+        <input type="text" id="message" name="message" class="p-2">
+        <input type="submit" value="Send" class="btn btn-primary p-2">
+      </form>
+    </div>
+  </div> -->
 
 
 

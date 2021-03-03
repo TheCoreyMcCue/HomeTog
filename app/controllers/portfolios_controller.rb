@@ -13,6 +13,8 @@ class PortfoliosController < ApplicationController
     #   lat: portfolio.latitude,
     #   lng: portfolio.longitude
     # }
+    @favorite = Favorite.new
+
   end
 
   def show

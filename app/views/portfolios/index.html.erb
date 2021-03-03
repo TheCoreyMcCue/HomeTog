@@ -12,8 +12,28 @@
                   <%= cl_image_tag 'r2udtt8ocgt13t5k87sa2wp8zp7n', height: 250, width: 200, crop: :fill %>
                 <% end %>
                 <div class="card-body">
+
+                  <h2 class="mb-5" id="index-photographer"><%= portfolio.name.capitalize %></h2>
+
+
+                  <% if portfolio.favorited?(current_user) %>
+
+
+                    <%= link_to favorite_path(portfolio.favorited?(current_user)), method: :delete do  %>
+                      <i class="fas fa-heart" style="color: red"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to(portfolio_favorites_path(portfolio), method: :post) do %>
+                      <i class="far fa-heart" style="color: black"></i>
+                    <% end %>
+                  <% end %>
+
+
+                  <p id="index-description"> <%= portfolio.description&.truncate(155, separator: " ") %> </p>
+
                   <h2 class="mb-3" id="index-photographer"><%= portfolio.name %></h2>
                   <p id="index-description"> <%= portfolio.description&.truncate(60, separator: " ") %> </p>
+
                   <div id="index-price"> € <%= portfolio.price %> <span class=""> /day</span></div>
                   <p id="index-user">Listed by: <%= portfolio.user.email %></p>
                   <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-3" %>
