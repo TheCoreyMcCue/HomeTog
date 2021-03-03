@@ -9,6 +9,21 @@
                 <%= cl_image_tag portfolio.photo.key, height: 250, width: 200, crop: :fill %>
                 <div class="card-body">
                   <h2 class="mb-5" id="index-photographer"><%= portfolio.name.capitalize %></h2>
+
+
+                  <% if portfolio.favorited?(current_user) %>
+
+
+                    <%= link_to favorite_path(portfolio.favorited?(current_user)), method: :delete do  %>
+                      <i class="fas fa-heart" style="color: red"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to(portfolio_favorites_path(portfolio), method: :post) do %>
+                      <i class="far fa-heart" style="color: black"></i>
+                    <% end %>
+                  <% end %>
+
+
                   <p id="index-description"> <%= portfolio.description&.truncate(155, separator: " ") %> </p>
                   <div id="index-price"> € <%= portfolio.price %> <span class=""> /day</span></div>
                   <p id="index-user">Listed by: <%= portfolio.user.email %></p>
