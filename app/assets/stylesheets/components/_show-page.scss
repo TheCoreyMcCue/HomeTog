@@ -1,0 +1,80 @@
+.show-page-image-design {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.h1-favorite-wrapper {
+  position: relative;
+}
+
+.fa-heart {
+  font-size: 26px;
+  position: absolute;
+  top:20px;
+  right: 5px;
+  color: #355070;
+}
+
+.description-container {
+  width: 750px;
+  padding-right: 50px;
+}
+
+.reservation-form {
+  width: 400px;
+}
+
+.chatbox {
+  width: 100%;
+  height: 500px;
+  box-shadow: 1px 1px 3px #cecece;
+  border-radius: 20px;
+}
+
+@media (max-width: 575px){
+
+  .show-page-image-design {
+    width: 100%;
+    height: 250px;
+  }
+
+  .show-page-h1 {
+    font-size: 30px;
+  }
+
+  .show-card-content-h2 {
+    font-size: 26px;
+    font-weight: 700px;
+  }
+
+  .description-container {
+    width: 320px;
+    padding-right: 0px;
+    margin: 0px 20px;
+  }
+
+  .show-card-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .show-page-avatar {
+    margin-left: 20px;
+  }
+
+  .reservation-form {
+    width: 90%;
+    margin: 0px 0px 40px 20px;
+  }
+
+  .fa-heart {
+    top:9px;
+
+  }
+}
+
+
+
+
