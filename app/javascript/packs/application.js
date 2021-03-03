@@ -23,8 +23,16 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { openProfile } from './indexHover'
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  // openProfile();
+  window.openProfile = openProfile
 });
+console.log('end of file');
+
+
+
+

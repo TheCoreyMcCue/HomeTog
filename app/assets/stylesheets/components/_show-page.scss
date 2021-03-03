@@ -1,0 +1,19 @@
+.show-page-image-design {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.h1-favorite-wrapper {
+  position: relative;
+}
+
+.fa-heart {
+  font-size: 26px;
+  position: absolute;
+  top:20px;
+  right: 5px;
+  color: #355070;
+}
+
