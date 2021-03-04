@@ -35,7 +35,14 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     authorize(@reservation)
-    @reservation.approved = true
+
+    if params[:approve] == "true"
+      @reservation.approved = true
+      @reservation.declined = false
+    else
+      @reservation.declined = true
+      @reservation.approved = false
+    end
     @reservation.save
   end
 

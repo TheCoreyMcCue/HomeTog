@@ -33,7 +33,15 @@
                     <div class="card-body">
                       <h2 class="mb-3" id="index-photographer"><%= res.portfolio.name.capitalize %></h2>
                       <p id="index-description"> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>. </p>
-                      <p id="index-description"> <%= res.approved ? "Approved by #{res.portfolio.user.email}" : "Not approved by #{res.portfolio.user.email} yet" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete %>) </p>
+                      <p id="index-description-approved-<%=res.id%> ">
+                      <% if res.approved %>
+                        <%= "Approved by #{res.portfolio.user.email}" %>
+                      <% elsif !res.approved && !res.declined %>
+                        <%= "Not approved by #{res.portfolio.user.email} yet" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete %>)
+                      <% else %>
+                        <%= "Your request was declined by #{res.portfolio.user.email}" %>
+                      <% end %>
+                      </p>
                       <div id="index-price"> € <%= res.portfolio.price %> <span class=""> /day</span></div>
                       <p id="index-user">Listed by: <%= res.portfolio.user.email %></p>
                       <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-5" %>
@@ -59,12 +67,18 @@
         <div class="request-card text-left px-5 d-flex justify-content-between mb-5 align-items-center">
           <p> <strong><%= request.user.email %></strong> requested your Services on the <%= request.date.strftime("%-d-%-m-%Y") %> </p>
           <div id="approved-<%= request.id %>">
-            <%if !request.approved  %>
-            <%= link_to "Approve this request",reservation_path(request), method: :patch, remote: true, class:"btn btn-primary"%>
-            <% else %>
-            <p>Approved ✓</p>
+            <%if !request.approved && !request.declined  %>
+            <%= link_to "Approve this request",reservation_path(request, approve: true), method: :patch, remote: true, class:"btn btn-primary"%>
+            <%= link_to "Decline this request",reservation_path(request, approve: false), method: :patch, remote: true, class:"btn btn-danger"%>
+            <% elsif request.approved %>
+              <p>Approved ✓</p>
+            <% elsif request.declined %>
+              <p>Declined x</p>
             <% end %>
           </div>
+
+
+
         </div>
         <% end %>
         <% end %>
