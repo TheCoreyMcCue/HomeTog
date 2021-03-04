@@ -8,12 +8,12 @@
 
     <% if @portfolio.favorited?(current_user) %>
       <%= link_to favorite_path(@portfolio.favorited?(current_user)), method: :delete do  %>
-        <i class="fas fa-heart mr-3" style="color: red">
+        <i class="fas fa-heart mr-3" style="color: #D62839">
         </i>
       <% end %>
     <% else %>
       <%= link_to(portfolio_favorites_path(@portfolio), method: :post) do %>
-        <i class="far fa-heart mr-3" style="color: red">
+        <i class="far fa-heart mr-3" style="color: #D62839">
         </i>
       <% end %>
     <% end %>
@@ -43,7 +43,8 @@
     <div class="content-wrapper">
       <div class="d-flex flex-column">
         <div class="d-flex ">
-          <%= image_tag 'photographer-one.jpg', class: "testimony-avatar show-page-avatar" %>
+          <%#= image_tag 'photographer-one.jpg', class: "testimony-avatar show-page-avatar" %>
+          <%= cl_image_tag @portfolio.photo.key, class: "testimony-avatar show-page-avatar" %>
           <div class="photographer-name-location-wrapper">
             <h2 class="pl-3 pt-2 show-card-content-h2">
               <%= @portfolio.name %>

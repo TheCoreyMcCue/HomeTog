@@ -1,9 +1,10 @@
 .chat-popup {
   box-sizing: border-box;
+  display: none;
 }
 
 #chatbox-button {
-  display: none;
+  // display: none;
 }
 
 /* Button used to open the chat form - fixed at the bottom of the page */
