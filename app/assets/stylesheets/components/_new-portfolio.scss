@@ -1,0 +1,20 @@
+.new-portfolio-bg {
+  position: relative;
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    background: url("https://images.unsplash.com/photo-1500634245200-e5245c7574ef?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80") no-repeat;
+    background-position: center;
+    background-sise: cover;
+    opacity: 0.15;
+  }
+}
+
+.new-portfolio-form {
+  width: 800px;
+  position: relative;
+}
