@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.display-chat {
+#chatbox-button {
   display: none;
 }
 
@@ -32,7 +32,7 @@
 
 /* Add styles to the form container */
 .form-container {
-  max-width: 600px;
+  max-width: 400px;
   padding: 10px;
   background-color: white;
   border-radius: 10px;
@@ -54,13 +54,13 @@
 
 /* When the textarea gets focus, do something */
 .form-container textarea:focus {
-  background-color: #ddd;
+  background-color: #fff;
   outline: none;
 }
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #4CAF50;
+  background-color: #355070;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -79,4 +79,9 @@
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+}
+
+.fa-comment-dots {
+  font-size: 30px;
+  color: #355070;
 }
