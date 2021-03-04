@@ -1,1 +1,6 @@
-document.getElementById("approved-<%= @reservation.id %>").innerHTML = "<p>You have approved this request</p>"
+<% if @reservation.approved %>
+  document.getElementById("approved-<%= @reservation.id %>").innerHTML = "<p>Approved ✓</p>"
+
+<% elsif @reservation.declined %>
+  document.getElementById("approved-<%= @reservation.id %>").innerHTML = "<p>Declined</p>"
+<% end%>
