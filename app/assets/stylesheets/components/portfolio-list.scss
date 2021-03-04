@@ -50,6 +50,10 @@
   text-align: center;
   color: #355070;
   font-family: Work Sans;
+  height: 100vh;
+  // position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
 }
 
 .tabcontent {
@@ -57,6 +61,4 @@
     &:first-child { display: block; }
 }
 
-.scroll {
- height: 600px;
-}
+
