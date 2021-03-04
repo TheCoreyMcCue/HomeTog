@@ -35,15 +35,19 @@
           <div id="<%= portfolio.id %>" class="tabcontent">
             <div>
               <h2 class="mb-3" id="preview-header"> <%= portfolio.name %> </h2>
-              <% if portfolio.favorited?(current_user) %>
-                    <%= link_to favorite_path(portfolio.favorited?(current_user)), method: :delete do  %>
-                      <i class="fas fa-heart mr-3" style="color: red"></i>
-                    <% end %>
-                  <% else %>
-                    <%= link_to(portfolio_favorites_path(portfolio), method: :post) do %>
-                      <i class="far fa-heart mr-3" style="color: black"></i>
-                    <% end %>
+              <% if user_signed_in? %>
+              <!-- favorites button -->
+                <% if portfolio.favorited?(current_user) %>
+                  <%= link_to favorite_path(portfolio.favorited?(current_user)), method: :delete do  %>
+                    <i class="fas fa-heart mr-3" style="color: red"></i>
                   <% end %>
+                <% else %>
+                  <%= link_to(portfolio_favorites_path(portfolio), method: :post) do %>
+                    <i class="far fa-heart mr-3" style="color: red"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+              <!-- favorites button -->
               <%#= image_tag 'avatar-pic.png', width: '100px', height: 'auto', class: "pt-3" %>
             </div>
             <p id="index-description"><%= portfolio.description&.truncate(140, separator: " ") %></p>
