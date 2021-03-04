@@ -28,9 +28,6 @@
     </a>
   </div>
 
-
-  <%#= cl_image_tag @portfolio.photo.key, class: "show-page-image-design" %>
-
   <div class="d-flex mt-4 show-card-wrapper">
     <div class="content-wrapper">
       <div class="d-flex flex-column">
@@ -56,8 +53,10 @@
 
     <div class="reservation-form">
       <%= simple_form_for ([@portfolio, @reservations]) do |f| %>
-        <%= f.input :date, as: :date %>
-        <%= f.input :total_price, disabled: true %>
+        <%= f.input :date, as: :date, html5: true %>
+        <div class="details-show-price py-2 pr-1">
+            <h4 class="text-center" id="priceCalculator" data-price="<%= @portfolio.price %>">Total: $  <%= number_with_precision(@portfolio.price, precision: 0) %></h4>
+          </div>
         <%= f.submit "Book Now", class:"btn btn-primary w-100" %>
       <% end %>
     </div>
@@ -71,6 +70,20 @@
       </form>
     </div>
   </div> -->
+
+<button onclick="openForm">open chat</button>
+
+  <div class="chat-popup display-chat" id="myForm">
+    <form action="@portfolio" class="form-container">
+      <h1>Chat</h1>
+
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+
+      <button type="submit" class="btn">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
 
 
 

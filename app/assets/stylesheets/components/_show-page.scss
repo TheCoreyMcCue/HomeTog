@@ -26,6 +26,11 @@
   width: 400px;
 }
 
+.form-control:disabled {
+  background: #fff;
+  border:none;
+}
+
 .chatbox {
   width: 100%;
   height: 500px;
