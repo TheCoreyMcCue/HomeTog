@@ -29,12 +29,16 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    @portfolio = Portfolio.new(portfolio_params)
-    @user = current_user
-    @portfolio.user = @user
-    @portfolio.save
-    redirect_to portfolio_path(@portfolio)
-    authorize @portfolio
+
+      @portfolio = Portfolio.new(portfolio_params)
+      @user = current_user
+      @portfolio.user = @user
+      authorize @portfolio
+      if @portfolio.save
+        redirect_to portfolio_path(@portfolio)
+      else
+        redirect_to reservations_path, notice: "You are a Photographer already! (You can only upload one portfolio)"
+      end
   end
 
   def edit

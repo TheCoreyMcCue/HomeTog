@@ -12,4 +12,6 @@ class Portfolio < ApplicationRecord
   def favorited?(current_user)
     Favorite.find_by(user_id: current_user.id, portfolio_id: id)
   end
+
+  validates :user, uniqueness: true
 end

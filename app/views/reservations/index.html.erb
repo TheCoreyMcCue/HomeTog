@@ -77,21 +77,21 @@
         <% if @portfolio.blank? %>
         <p>You have not uploades a photographer portfolio yet.</p>
         <% else %>
-          <% @portfolio.each do |portfolio| %>
 
-            <%= link_to portfolio_path(portfolio), class: "index-cards" do %>
+
+            <%= link_to portfolio_path(@portfolio), class: "index-cards" do %>
               <div class="card" id="index-cards">
                 <div class="card-product-infos">
                   <div class="d-flex">
-                    <%= cl_image_tag portfolio.photo.key, height: 300, width: 400, crop: :fill %>
+                    <%= cl_image_tag @portfolio.photo.key, height: 300, width: 400, crop: :fill %>
                     <div class="card-body">
-                      <h2 class="mb-5" id="index-photographer"><%= portfolio.name.capitalize %></h2>
-                      <div id="index-price"> € <%= portfolio.price %> <span class=""> /day</span></div>
+                      <h2 class="mb-5" id="index-photographer"><%= @portfolio.name.capitalize %></h2>
+                      <div id="index-price"> € <%= @portfolio.price %> <span class=""> /day</span></div>
                       <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-5" %>
 
                       <% if policy(@portfolio).update? %>
                         <div class="mx-2">
-                          <%= link_to(edit_portfolio_path(portfolio)) do %>
+                          <%= link_to(edit_portfolio_path(@portfolio)) do %>
                             <i class="far fa-edit"></i>
                           <% end %>
                         </div>
@@ -99,7 +99,7 @@
 
                       <% if policy(@portfolio).destroy? %>
                         <div>
-                          <%= link_to(portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                          <%= link_to(@portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
                             <i class="far fa-trash-alt"></i>
                           <% end %>
                         </div>
@@ -110,7 +110,7 @@
                 </div>
               </div>
             <% end %>
-          <% end %>
+
         <% end %>
       </div>
     </div>
