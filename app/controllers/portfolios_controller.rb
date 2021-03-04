@@ -1,4 +1,5 @@
 class PortfoliosController < ApplicationController
+  # skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_portfolio, only: %i[show edit update destroy]
   def index
     # @portfolios = Portfolio.all
