@@ -21,6 +21,7 @@ class PortfoliosController < ApplicationController
     @reservations = Reservation.new
     @portfolio = Portfolio.find(params[:id])
     authorize(@portfolio)
+    @favorite = Favorite.new
   end
 
   def new
