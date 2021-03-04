@@ -24,12 +24,19 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { openProfile } from './indexHover'
+import { priceCalculator } from '../plugins/price_calculator';
+import { openForm, closeForm } from '../plugins/chat_box';
+
+
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // openProfile();
-  window.openProfile = openProfile
+  window.openProfile = openProfile;
+  window.openForm = openForm;
+  window.closeForm = closeForm;
 });
 console.log('end of file');
 

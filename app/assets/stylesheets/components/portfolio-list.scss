@@ -32,7 +32,8 @@
 }
 
 #index-price {
-  color: #69B578
+  color: #69B578;
+  font-size: 18px;
 }
 
 #index-user {
@@ -53,12 +54,20 @@
   height: 100vh;
   // position: -webkit-sticky;
   position: sticky;
-  top: 75px;
+  top: 55px;
+}
+
+#preview-header {
+  text-align: center;
 }
 
 .tabcontent {
   display: none;
     &:first-child { display: block; }
+}
+
+.preview-avatar {
+  border-radius: 50%;
 }
 
 
