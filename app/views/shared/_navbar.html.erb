@@ -17,11 +17,12 @@
         </li>
 
         <li class="nav-item dropdown">
-          <%= image_tag "avatar-pic.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%#= image_tag "avatar-pic.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag current_user.photo.key, class: 'preview-avatar mb-2', id: "navbarDropdown", data: { toggle: "dropdown" }, width: '55px', height: '55px' %>
 
           <div class="dropdown-menu dropdown-menu-right mt-4" aria-labelledby="navbarDropdown">
             <%= link_to "Dashboard", reservations_path, class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
