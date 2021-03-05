@@ -81,7 +81,7 @@
                   <% elsif request.approved %>
                     <p>Approved ✓</p>
                   <% elsif request.declined %>
-                    <p>Declined  ✗</p>
+                    <p>Declined ✗</p>
                   <% end %>
                 </div>
               </div>
@@ -95,7 +95,7 @@
       <div class="own-portfolio" id="own-portfolio">
         <h2 class="my-5">Your Portfolio</h2>
         <% if @portfolio.blank? %>
-        <p>You have not uploades a photographer portfolio yet.</p>
+        <p>You have not uploaded a photographer portfolio yet</p>
         <% else %>
 
 
@@ -136,9 +136,9 @@
     </div>
 
     <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tab">
-      <h2 class="my-5">You marked the following Portfolios as your Favorites:</h2>
+      <h2 class="my-5">You favorited the following photographers:</h2>
       <% if @favorites.blank? %>
-        <p>You have not saved any portfolios yet.</p>
+        <p>You have not favorited any photographers yet</p>
       <% else %>
         <% @favorites.each do |fav| %>
 
