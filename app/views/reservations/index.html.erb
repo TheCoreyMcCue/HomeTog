@@ -37,9 +37,9 @@
                       <% if res.approved %>
                         <%= "Approved by #{res.portfolio.user.email}" %>
                       <% elsif !res.approved && !res.declined %>
-                        <%= "Not approved by #{res.portfolio.user.email} yet" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete %>)
+                        <p class="yellow"> <%= "Not approved by #{res.portfolio.user.email} yet" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete %>) </p>
                       <% else %>
-                        <%= "Your request was declined by #{res.portfolio.user.email}" %>
+                        <p class="red"> <%= "Your request was declined by #{res.portfolio.user.email}" %> </p>
                       <% end %>
                       </p>
                       <div id="index-price"> € <%= res.portfolio.price %> <span class=""> /day</span></div>
