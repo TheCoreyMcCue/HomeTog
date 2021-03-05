@@ -6,6 +6,15 @@
   padding-top: 15px;
 }
 
+.signin {
+  background-image: url('oldschool.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  background-position-y: 95%;
+  height: 600px;
+}
+
 .register-body {
   background-image: url('register.jpeg');
   background-size: cover;
@@ -19,4 +28,22 @@
 }
 .member-button:hover {
   color: white;
+}
+
+
+#floating-buttons {
+  text-align: center;
+}
+
+#welcome-back {
+  text-align: center;
+}
+
+.lower-buttons {
+  color: white;
+}
+.lower-buttons:hover {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
