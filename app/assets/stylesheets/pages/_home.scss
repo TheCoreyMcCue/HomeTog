@@ -1,10 +1,23 @@
 // Specific CSS for your home-page
-.home-page-banner {
-  height:550px;
+h1 {
+  color: #355070;
+  font-family: Work Sans;
 }
 
 h2 {
   font-size: 32px;
+  color: #355070;
+  font-family: Work Sans;
+}
+
+p {
+  color: black;
+  font-family: Nunito;
+  font-size: 18px;
+}
+
+.home-page-banner {
+  height:550px;
 }
 
 .card-content {

@@ -1,7 +1,7 @@
 class Portfolio < ApplicationRecord
   belongs_to :user
   has_many_attached :photos
-  has_one :favorites
+  has_many :favorites, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
   def photo
