@@ -72,12 +72,16 @@
                 <p> <strong><%= request.user.email %></strong> requested your Services on the <%= request.date.strftime("%-d-%-m-%Y") %> </p>
                 <div id="approved-<%= request.id %>">
                   <%if !request.approved && !request.declined  %>
-                    <%= link_to "Approve this request",reservation_path(request, approve: true), method: :patch, remote: true, class:"btn btn-primary"%>
-                    <%= link_to "Decline this request",reservation_path(request, approve: false), method: :patch, remote: true, class:"btn btn-danger"%>
+                    <%= link_to (reservation_path(request, approve: true)), method: :patch, remote: true, class: "approve-button" do%>
+                      <i class="far fa-check-circle"></i>
+                    <% end %>
+                    <%= link_to (reservation_path(request, approve: false)), method: :patch, remote: true, class: "reject-button" do %>
+                      <i class="far fa-times-circle"></i>
+                    <% end %>
                   <% elsif request.approved %>
                     <p>Approved ✓</p>
                   <% elsif request.declined %>
-                    <p>Declined x</p>
+                    <p>Declined  ✗</p>
                   <% end %>
                 </div>
               </div>

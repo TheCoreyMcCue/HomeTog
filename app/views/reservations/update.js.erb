@@ -2,5 +2,5 @@
   document.getElementById("approved-<%= @reservation.id %>").innerHTML = "<p>Approved ✓</p>"
 
 <% elsif @reservation.declined %>
-  document.getElementById("approved-<%= @reservation.id %>").innerHTML = "<p>Declined x</p>"
+  document.getElementById("approved-<%= @reservation.id %>").innerHTML = "<p>Declined ✗</p>"
 <% end%>
