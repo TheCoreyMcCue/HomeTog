@@ -25,21 +25,23 @@
         <% else %>
           <% @reservations.each do |res| %>
 
-            <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
+
               <div class="card" id="index-cards">
                 <div class="card-product-infos">
                   <div class="d-flex">
                     <%= cl_image_tag res.portfolio.photo.key, height: 300, width: 400, crop: :fill %>
                     <div class="card-body">
+                       <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
                       <h2 class="mb-3" id="index-photographer"><%= res.portfolio.name.capitalize %></h2>
+                      <% end %>
                       <p id="index-description"> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>. </p>
                       <p id="index-description-approved-<%=res.id%> ">
                       <% if res.approved %>
-                        <%= "Approved by #{res.portfolio.user.email}" %>
+                        <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.email}" %> </p>
                       <% elsif !res.approved && !res.declined %>
-                        <p class="yellow"> <%= "Not approved by #{res.portfolio.user.email} yet" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete %>) </p>
+                        <p class="yellow-waiting booking-status"> <%= "Not approved by #{res.portfolio.user.email} yet" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>) </p>
                       <% else %>
-                        <p class="red"> <%= "Your request was declined by #{res.portfolio.user.email}" %> </p>
+                        <p class="red-declined booking-status"> <%= "Your request was declined by #{res.portfolio.user.email}" %> </p>
                       <% end %>
                       </p>
                       <div id="index-price"> € <%= res.portfolio.price %> <span class=""> /day</span></div>
@@ -49,7 +51,7 @@
                   </div>
                 </div>
               </div>
-            <% end %>
+
 
           <% end %>
         <% end %>
@@ -61,26 +63,30 @@
       <div class="requests " id="requests">
         <h2 class="my-5">Your services are requested for the following dates:</h2>
         <% if @requests.blank? %>
-        <p>No one has requested your profile yet.</p>
+          <p>No one has requested your profile yet.</p>
         <% else %>
-        <% @requests.each do |request| %>
-        <div class="request-card text-left px-5 d-flex justify-content-between mb-5 align-items-center">
-          <p> <strong><%= request.user.email %></strong> requested your Services on the <%= request.date.strftime("%-d-%-m-%Y") %> </p>
-          <div id="approved-<%= request.id %>">
-            <%if !request.approved && !request.declined  %>
-            <%= link_to "Approve this request",reservation_path(request, approve: true), method: :patch, remote: true, class:"btn btn-primary"%>
-            <%= link_to "Decline this request",reservation_path(request, approve: false), method: :patch, remote: true, class:"btn btn-danger"%>
-            <% elsif request.approved %>
-              <p>Approved ✓</p>
-            <% elsif request.declined %>
-              <p>Declined x</p>
-            <% end %>
-          </div>
-
-
-
-        </div>
-        <% end %>
+          <% @requests.each do |request| %>
+            <div class="d-flex align-items-center">
+              <%= cl_image_tag request.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
+              <div class="request-card text-left px-5 d-flex justify-content-between my-2 align-items-center">
+                <p> <strong><%= request.user.email %></strong> requested your Services on the <%= request.date.strftime("%-d-%-m-%Y") %> </p>
+                <div id="approved-<%= request.id %>">
+                  <%if !request.approved && !request.declined  %>
+                    <%= link_to (reservation_path(request, approve: true)), method: :patch, remote: true, class: "approve-button" do%>
+                      <i class="far fa-check-circle"></i>
+                    <% end %>
+                    <%= link_to (reservation_path(request, approve: false)), method: :patch, remote: true, class: "reject-button" do %>
+                      <i class="far fa-times-circle"></i>
+                    <% end %>
+                  <% elsif request.approved %>
+                    <p>Approved ✓</p>
+                  <% elsif request.declined %>
+                    <p>Declined  ✗</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

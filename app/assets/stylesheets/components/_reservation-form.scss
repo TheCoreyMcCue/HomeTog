@@ -5,7 +5,20 @@
   padding:20px;
 }
 
-.yellow{
+.yellow-waiting{
   background-color: #FFFDC6;
-  width:400px;
+}
+
+.red-declined {
+  background-color: rgba(214, 40, 57, 0.24) ;
+}
+
+.green-approved{
+  background-color: #DDFFE0;
+
+}
+
+.booking-status{
+  width: max-content;
+  padding:0 5px;
 }
