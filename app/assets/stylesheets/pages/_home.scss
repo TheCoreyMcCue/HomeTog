@@ -17,7 +17,7 @@ p {
 }
 
 .home-page-banner {
-  height:550px;
+  height:600px;
 }
 
 .card-content {
@@ -77,6 +77,7 @@ p {
 @media (max-width: 576px){
   .h1-mobile {
     font-size: 24px!important;
+    padding-left: 0px;
   }
 
   .input-width {
