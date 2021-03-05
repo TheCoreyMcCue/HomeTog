@@ -1,7 +1,7 @@
-<div class="register-body">
+<div class="register-body pt-4" style="background-image: url(' <%= image_path 'register' %> ');">
   <h1 id="signup">Welcome to HomeTog</h1>
-  <div class="container">
-    <div class="row d-flex justify-content-center">
+  <div class="container registration-wrapper">
+    <div class="row d-flex flex-column justify-content-center">
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
 
@@ -29,7 +29,7 @@
           </div>
         <% end %>
         <%- if controller_name != 'sessions' %>
-          <%= link_to "Already a member? Log in", new_session_path(resource_name), class: "member-button" %><br />
+          <%= link_to "Already a member? Log in", new_session_path(resource_name), class: "member-button mb-5" %><br />
         <% end %>
     </div>
   </div>

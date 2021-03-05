@@ -6,17 +6,21 @@
   padding-top: 15px;
 }
 
+.registration-wrapper {
+  width: 300px;
+  // opacity: 0.9;
+}
+
 .signin {
-  background-image: url('../assets/oldschool.jpeg');
+  // background-image: url('../assets/oldschool.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.9;
   background-position-y: 95%;
   height: 600px;
 }
 
 .register-body {
-  background-image: url('../assets/register.jpeg');
+  // background-image: url('../assets/register.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.9;
@@ -28,6 +32,8 @@
 }
 .member-button:hover {
   color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 
