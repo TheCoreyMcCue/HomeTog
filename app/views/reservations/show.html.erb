@@ -2,7 +2,8 @@
   <div class="container text-center pt-3 col-6" id="booking-confirmation-box">
     <h1>Congratulations!</h1>
     <p>You requested <%= @reservation.portfolio.name %> for the <strong> <%= @reservation.date.strftime("%-d-%-m-%Y") %> </strong></p>
-    <p>Waitig for <%= @reservation.portfolio.user.email %> to approve your request...(<%= link_to "Profile", reservations_path %>)</p>
-    <%= link_to "Continue looking?", portfolios_path, class: "btn btn-primary my-3" %>
+    <p>Waitig for <%= @reservation.portfolio.user.email %> to approve your request...</p>
+    <%= link_to "Your Dashboard", reservations_path, class: "btn btn-primary my-3" %>
+    <p class="small-font no-hover-decoration"><%= link_to "Continue looking for Photographers?", portfolios_path %> </p>
   </div>
 </div>
