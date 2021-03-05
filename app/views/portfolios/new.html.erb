@@ -8,7 +8,13 @@
         <%= f.input :location %>
         <%= f.input :description %>
         <%= f.input :price %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <label class="btn btn-info">
+        <i class="fas fa-images"></i> Add photos to your portfolio
+        <span style="display:none;">
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        </span>
+      </label>
+
         <div class="d-flex">
           <%= f.submit "Create Portfolio", class:'btn btn-primary' %>
           <% if action_name == 'edit' %>
