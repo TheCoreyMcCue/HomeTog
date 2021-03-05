@@ -19,9 +19,9 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="reservations" id="reservations">
-        <h2 class="my-5">You reservated the following Photographers:</h2>
+        <h2 class="my-5">You have requested the following photographers:</h2>
         <%  if @reservations.blank? %>
-          <p>You have not requested any portfolio reservation yet.</p>
+          <p>You have not made any reservations yet.</p>
         <% else %>
           <% @reservations.each do |res| %>
 
@@ -34,12 +34,12 @@
                        <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
                       <h2 class="mb-3" id="index-photographer"><%= res.portfolio.name.capitalize %></h2>
                       <% end %>
-                      <p id="index-description"> You requested <%= res.portfolio.name %>`s portfolio for the <%= res.date %>. </p>
+                      <p id="index-description"> You requested <%= res.portfolio.name %>`s services for <strong> <%= res.date %></strong>. </p>
                       <p id="index-description-approved-<%=res.id%> ">
                       <% if res.approved %>
                         <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.email}" %> </p>
                       <% elsif !res.approved && !res.declined %>
-                        <p class="yellow-waiting booking-status"> <%= "Not approved by #{res.portfolio.user.email} yet" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>) </p>
+                        <p class="yellow-waiting booking-status"> <%= "Not yet approved" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>) </p>
                       <% else %>
                         <p class="red-declined booking-status"> <%= "Your request was declined by #{res.portfolio.user.email}" %> </p>
                       <% end %>
