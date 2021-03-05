@@ -12,16 +12,22 @@ class ReservationsController < ApplicationController
   end
 
   def create
+
     @user = current_user
     @portfolio = Portfolio.find(params[:portfolio_id])
     @reservation = Reservation.new(reservation_params)
     @reservation.user = @user
     @reservation.portfolio = @portfolio
-    authorize(@reservation)
-    if @reservation.save
-      redirect_to reservation_path(@reservation), notice: "Reservation was saved succsessfully!"
+    if @reservation.date != nil
+      authorize(@reservation)
+      if @reservation.save
+        redirect_to reservation_path(@reservation), notice: "Reservation was saved succsessfully!"
+      else
+        redirect_to portfolio_path(@portfolio), notice: "Could not create Reservation!"
+      end
     else
-      redirect_to portfolio_path(@portfolio), notice: "Could not create Reservation!"
+      authorize(@reservation)
+      redirect_to portfolio_path(@portfolio), notice: "Enter a Date for the Reservation!"
     end
   end
 

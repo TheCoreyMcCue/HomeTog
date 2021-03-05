@@ -95,24 +95,25 @@
   </div>
 
 
-
-
-  <div class="d-flex">
-    <% if policy(@portfolio).update? %>
-    <div class="mx-2">
-    <%= link_to(edit_portfolio_path(@portfolio)) do %>
-      <i class="far fa-edit"></i>
-    <% end %>
-    </div>
-    <% end %>
-
-  <% if policy(@portfolio).destroy? %>
-    <div>
-      <%= link_to(@portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-        <i class="far fa-trash-alt">
-        </i>
+  <% if current_user == @portfolio.user %>
+    <div class="d-flex">
+      <% if policy(@portfolio).update? %>
+      <div class="mx-2">
+      <%= link_to(edit_portfolio_path(@portfolio)) do %>
+        <i class="far fa-edit"></i>
       <% end %>
+      </div>
+      <% end %>
+
+    <% if policy(@portfolio).destroy? %>
+      <div class="mb-3">
+        <%= link_to(@portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+          <i class="far fa-trash-alt">
+          </i>
+        <% end %>
+      </div>
+    <% end %>
     </div>
   <% end %>
-  </div>
+
 </div>
