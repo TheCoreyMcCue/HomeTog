@@ -1,4 +1,5 @@
 <div class="container-fluid">
+  <h1 id="index-header" class="pb-3">Available Photographers In Your Neighborhood</h1>
   <div class="row ml-1 mt-2">
     <div class="col-12 col-md-6">
       <% @portfolios.each do |portfolio| %>
@@ -59,7 +60,7 @@
               <div class="carousel-inner">
               <% portfolio.photos.each_with_index do |photo, index|%>
                   <div class="carousel-item <%= 'active' if index == 0 %>">
-                    <%= cl_image_tag photo.key, class: "d-block w-100", height: 475, width: 600, crop: :fill %>
+                    <%= cl_image_tag photo.key, class: "d-block w-100", height: 425, width: 600, crop: :fill %>
                   </div>
               <% end %>
               </div>
