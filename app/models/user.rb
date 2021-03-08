@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :reservations
   has_many :favorites
   has_one_attached :photo
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
