@@ -14,7 +14,7 @@
                 <% end %>
                 <div class="card-body">
 
-                  <h2 class="mb-3" id="index-photographer"><%= portfolio.name.capitalize %></h2>
+                  <h2 class="mb-3" id="index-photographer"><%= portfolio.user.full_name.capitalize %></h2>
 
 
                  <!--  <p id="index-description"> <%= portfolio.description&.truncate(155, separator: " ") %> </p> -->
@@ -38,7 +38,7 @@
               <%= cl_image_tag portfolio.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
               <%#= image_tag "photographer-one.jpg", class: 'preview-avatar mb-2', width: '60px', height: '60px'%>
             <div>
-              <h2 class="mb-3 mr-5 pr-4" id="preview-header"> <%= portfolio.name %> </h2>
+              <h2 class="mb-3 mr-5 pr-4" id="preview-header"> <%= portfolio.user.full_name %> </h2>
               </div>
               <% if user_signed_in? %>
               <!-- favorited code -->
