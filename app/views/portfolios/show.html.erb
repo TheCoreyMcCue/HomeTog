@@ -77,11 +77,10 @@
         <%= simple_form_for ([@portfolio, @reservations]) do |f| %>
         <%= f.input :date, as: :date, html5: true %>
         <div class="details-show-price py-2 pr-1">
-          <h4 class="text-center" id="priceCalculator" data-price="<%= @portfolio.price %>">Total: $  <%= number_with_precision(@portfolio.price, precision: 0) %></h4>
-        </div>
-        <%= f.submit "Book Now", class:"btn btn-primary w-100" %>
-        <% end %>
-      </div>
+            <h4 class="text-center" id="priceCalculator" data-price="<%= @portfolio.price %>">Total: $  <%= number_with_precision(@portfolio.price, precision: 0) %></h4>
+          </div>
+        <%= f.submit "Book Now", class:"btn btn-primary w-100 button-design" %>
+      <% end %>
     </div>
 
     <!-- <button onclick="openForm()" id="chatbox-button" class="btn btn-white mt-5"> <i class="far fa-comment-dots pr-2"></i>How may I help?</button> -->
