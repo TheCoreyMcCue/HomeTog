@@ -9,6 +9,10 @@ class Portfolio < ApplicationRecord
     photos.first
   end
 
+  def full_name
+    user.full_name
+  end
+
   def average_rating
     if reviews.length == 0
       return 0
