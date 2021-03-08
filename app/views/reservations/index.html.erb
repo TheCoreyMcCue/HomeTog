@@ -32,7 +32,7 @@
                     <%= cl_image_tag res.portfolio.photo.key, height: 300, width: 400, crop: :fill %>
                     <div class="card-body">
                        <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
-                      <h2 class="mb-3" id="index-photographer"><%= res.portfolio.full_name.capitalize %></h2>
+                      <h2 class="mb-3" id="index-photographer"><%= res.portfolio.full_name %></h2>
                       <% end %>
                       <p id="index-description"> You requested <%= res.portfolio.full_name %>`s services for <strong> <%= res.date.strftime("%B %-d, %Y") %></strong>. </p>
                       <p id="index-description-approved-<%=res.id%> ">
@@ -110,7 +110,7 @@
                   <div class="d-flex">
                     <%= cl_image_tag @portfolio.photo.key, height: 300, width: 400, crop: :fill %>
                     <div class="card-body">
-                      <h2 class="mb-5" id="index-photographer"><%= @portfolio.user.full_name.capitalize %></h2>
+                      <h2 class="mb-5" id="index-photographer"><%= @portfolio.user.full_name %></h2>
                       <div id="index-price"> € <%= @portfolio.price %> <span class=""> /day</span></div>
                       <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-5" %>
 
@@ -153,7 +153,7 @@
               <div class="d-flex">
                 <%= cl_image_tag fav.portfolio.photo.key, height: 300, width: 400, crop: :fill %>
                 <div class="card-body">
-                  <h2 class="mb-3" id="index-photographer"><%= fav.portfolio.full_name.capitalize %></h2>
+                  <h2 class="mb-3" id="index-photographer"><%= fav.portfolio.full_name %></h2>
                   <div id="index-price"> € <%= fav.portfolio.price %> <span class=""> /day</span></div>
                   <p id="index-user">Listed by: <%= fav.portfolio.user.first_name %></p>
                   <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-5" %>
