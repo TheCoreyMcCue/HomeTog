@@ -35,8 +35,11 @@
         <% @portfolios.each do |portfolio| %>
           <div id="<%= portfolio.id %>" class="tabcontent">
             <div class="d-flex justify-content-between">
-              <%= cl_image_tag portfolio.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
-              <%#= image_tag "photographer-one.jpg", class: 'preview-avatar mb-2', width: '60px', height: '60px'%>
+              <% if  portfolio.user.photo.attached? %>
+                <%= cl_image_tag portfolio.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
+              <% else %>
+                <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar mb-2', width: '60px', height: '60px'%>
+              <% end %>
             <div>
               <h2 class="mb-3 mr-5 pr-4" id="preview-header"> <%= portfolio.user.full_name %> </h2>
               </div>
