@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_093013) do
     t.bigint "user_id", null: false
     t.text "description"
     t.integer "price"
+    t.string "images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_portfolios_on_user_id"
@@ -92,7 +93,6 @@ ActiveRecord::Schema.define(version: 2021_03_08_093013) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "photo"
