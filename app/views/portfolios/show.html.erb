@@ -2,7 +2,7 @@
   <div class="h1-favorite-wrapper d-flex mx-1">
     <div class="w-100">
       <h1 class="show-page-h1">
-        <%= @portfolio.name %>
+        <%= @portfolio.user.full_name %>
       </h1>
     </div>
 
@@ -47,7 +47,7 @@
           <%= cl_image_tag @portfolio.user.photo.key, class: "testimony-avatar show-page-avatar" %>
           <div class="photographer-name-location-wrapper">
             <h2 class="pl-3 pt-2 show-card-content-h2">
-              <%= @portfolio.name %>
+              <%= @portfolio.user.full_name %>
             </h2>
             <p class="pl-3">
               Located in <%= @portfolio.location %>
