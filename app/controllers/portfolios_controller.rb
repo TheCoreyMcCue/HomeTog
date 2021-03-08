@@ -4,16 +4,15 @@ class PortfoliosController < ApplicationController
   def index
     # @portfolios = Portfolio.all
     @portfolios = policy_scope(Portfolio).order(created_at: :desc)
-    # if params.dig(:search, :location).present?
-    #   @portfolios = @portfolios.where(location: params.dig(:search, :location))
-    # else
-    #   @portfolios = @portfolios.all
-    # end
-    # @markers = @portfolios.geocoded.map do |portfolio|
-    # {
-    #   lat: portfolio.latitude,
-    #   lng: portfolio.longitude
-    # }
+ if params[:query].present?
+      sql_query = " \
+        portfolios.name @@ :query \
+        OR portfolios.location @@ :query \
+      "
+      @portfolios = Portfolio.joins(:location).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @portfolios = Portfolio.all
+    end
     @favorite = Favorite.new
   end
 
