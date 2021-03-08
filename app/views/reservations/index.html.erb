@@ -32,13 +32,16 @@
                     <%= cl_image_tag res.portfolio.photo.key, height: 300, width: 400, crop: :fill %>
                     <div class="card-body">
                        <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
-                      <h2 class="mb-3" id="index-photographer"><%= res.portfolio.name.capitalize %></h2>
+                      <h2 class="mb-3" id="index-photographer"><%= res.portfolio.full_name.capitalize %></h2>
                       <% end %>
-                      <p id="index-description"> You requested <%= res.portfolio.name %>`s services for <strong> <%= res.date %></strong>. </p>
+                      <p id="index-description"> You requested <%= res.portfolio.full_name %>`s services for <strong> <%= res.date %></strong>. </p>
                       <p id="index-description-approved-<%=res.id%> ">
                       <% if res.approved %>
                         <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.first_name}" %> </p>
-                        <p> <%= link_to "Rate this Photographer", new_portfolio_reservation_review_path(res.portfolio, res)  %> </p>
+                        <% if res.review == nil %>
+                          <p> <%= link_to "Rate this Photographer", new_portfolio_reservation_review_path(res.portfolio, res)  %> </p>
+                        <% end %>
+
 
                       <% elsif !res.approved && !res.declined %>
                         <p class="yellow-waiting booking-status"> <%= "Not yet approved" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>) </p>
