@@ -17,8 +17,11 @@
         </li>
 
         <li class="nav-item dropdown">
-          <%#= image_tag "avatar-pic.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <%= cl_image_tag current_user.photo.key, class: 'preview-avatar mb-2', id: "navbarDropdown", data: { toggle: "dropdown" }, width: '55px', height: '55px' %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: 'preview-avatar mb-2', id: "navbarDropdown", data: { toggle: "dropdown" }, width: '55px', height: '55px' %>
+          <% else %>
+          <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar mb-2', id: "navbarDropdown", data: { toggle: "dropdown" }, width: '55px', height: '55px'%>
+          <% end %>
 
           <div class="dropdown-menu dropdown-menu-right mt-4" aria-labelledby="navbarDropdown">
             <%= link_to "Dashboard", reservations_path, class: "dropdown-item" %>
@@ -28,7 +31,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Login", new_user_session_path, class: "rounded-pill btn btn-primary" %>
         </li>
       <% end %>
     </ul>
