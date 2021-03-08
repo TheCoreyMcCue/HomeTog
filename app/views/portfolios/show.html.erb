@@ -4,6 +4,7 @@
       <h1 class="show-page-h1">
         <%= @portfolio.user.full_name %>
       </h1>
+      <%= @portfolio.average_rating %>
     </div>
     <% if user_signed_in? %>
     <% if @portfolio.favorited?(current_user) %>
@@ -16,7 +17,7 @@
     <i class="far fa-heart mr-3" style="color: #D62839">
     </i>
     <% end %>
-    <% end %>
+
     <% end %>
       <!-- <i class="far fa-heart">
       </i> -->
@@ -44,6 +45,7 @@
       <div class="content-wrapper">
         <div class="d-flex flex-column">
           <div class="d-flex ">
+            
             <% if @portfolio.user.photo.attached? %>
             <%= cl_image_tag @portfolio.user.photo.key, class: "testimony-avatar show-page-avatar" %>
             <% else %>
@@ -77,10 +79,12 @@
         <%= simple_form_for ([@portfolio, @reservations]) do |f| %>
         <%= f.input :date, as: :date, html5: true %>
         <div class="details-show-price py-2 pr-1">
+
             <h4 class="text-center" id="priceCalculator" data-price="<%= @portfolio.price %>">Total: $  <%= number_with_precision(@portfolio.price, precision: 0) %></h4>
           </div>
         <%= f.submit "Book Now", class:"btn btn-primary w-100 button-design" %>
       <% end %>
+
     </div>
 
     <!-- <button onclick="openForm()" id="chatbox-button" class="btn btn-white mt-5"> <i class="far fa-comment-dots pr-2"></i>How may I help?</button> -->
@@ -116,7 +120,31 @@
         <% end %>
       </div>
       <% end %>
+
     </div>
     <% end %>
 
+    <h2>Reviews:</h2>
+    <div class="container">
+      <div class="d-flex ">
+        <div class="row mb-3">
+          <% @portfolio.reservations.each do |res| %>
+
+          <div class="col-12">
+            <% if res.review != nil %>
+            <div class="d-flex align-items-center">
+              <%= cl_image_tag res.user.photo.key, class: 'preview-avatar', width: '60px', height: '60px' %>
+              <div class="text-left px-2">
+                <p class="mb-0"> <%= res.user.email %> </p>
+                <p> <%= res.review.created_at %> </p>
+              </div>
+            </div>
+            <%= res.review.photographer_description%>
+            <% end %>
+          </div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>

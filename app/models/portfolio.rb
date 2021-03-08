@@ -3,11 +3,23 @@ class Portfolio < ApplicationRecord
   has_many_attached :photos
   has_many :favorites, dependent: :destroy
   has_many :reservations, dependent: :destroy
+  has_many :reviews, through: :reservations
 
   def photo
     photos.first
   end
 
+  def average_rating
+    if reviews.length == 0
+      return 0
+    else
+      sum = 0
+      reviews.each do |review|
+        sum += review.photographer_rating
+      end
+      (sum.to_f / reviews.length).round(2)
+    end
+  end
 
 
   def favorited?(current_user)
