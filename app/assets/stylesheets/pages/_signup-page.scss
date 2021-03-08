@@ -7,12 +7,10 @@
 }
 
 .registration-wrapper {
-  width: 300px;
-  // opacity: 0.9;
+  width: 800px;
 }
 
 .signin {
-  // background-image: url('../assets/oldschool.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 95%;
@@ -20,7 +18,6 @@
 }
 
 .register-body {
-  // background-image: url('../assets/register.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.9;
@@ -30,12 +27,12 @@
 .member-button {
   color: white;
 }
+
 .member-button:hover {
   color: white;
   text-decoration: none;
   font-weight: bold;
 }
-
 
 #floating-buttons {
   text-align: center;
@@ -48,6 +45,7 @@
 .lower-buttons {
   color: white;
 }
+
 .lower-buttons:hover {
   color: white;
   text-decoration: none;
