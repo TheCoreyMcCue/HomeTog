@@ -34,7 +34,7 @@
                        <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
                       <h2 class="mb-3" id="index-photographer"><%= res.portfolio.full_name.capitalize %></h2>
                       <% end %>
-                      <p id="index-description"> You requested <%= res.portfolio.full_name %>`s services for <strong> <%= res.date %></strong>. </p>
+                      <p id="index-description"> You requested <%= res.portfolio.full_name %>`s services for <strong> <%= res.date.strftime("%B %-d, %Y") %></strong>. </p>
                       <p id="index-description-approved-<%=res.id%> ">
                       <% if res.approved %>
                         <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.first_name}" %> </p>
@@ -74,7 +74,7 @@
             <div class="d-flex align-items-center">
               <%= cl_image_tag request.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
               <div class="request-card text-left px-5 d-flex justify-content-between my-2 align-items-center">
-                <p> <strong><%= request.user.first_name %></strong> requested your Services on <strong> <%= request.date.strftime("%-d-%-m-%Y") %> </strong> </p>
+                <p> <strong><%= request.user.first_name %></strong> requested your Services on <strong> <%= request.date.strftime("%B %-d, %Y") %> </strong> </p>
                 <div id="approved-<%= request.id %>">
                   <%if !request.approved && !request.declined  %>
                     <%= link_to (reservation_path(request, approve: true)), method: :patch, remote: true, class: "approve-button" do%>

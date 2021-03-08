@@ -1,7 +1,7 @@
 <div class="booking-confirmation d-flex align-items-center justify-content-center" style=" background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80)" >
   <div class="container text-center pt-3 col-6" id="booking-confirmation-box">
     <h1>Congratulations!</h1>
-    <p>You requested <%= @reservation.portfolio.name %> for <strong> <%= @reservation.date.strftime("%-d-%-m-%Y") %> </strong></p>
+    <p>You requested <%= @reservation.portfolio.name %> for <strong> <%= @reservation.date.strftime("%B %-d, %Y") %> </strong></p>
     <p>Waitig for <%= @reservation.portfolio.name %> to approve your request...</p>
     <%= link_to "Your Dashboard", reservations_path, class: "btn btn-primary my-3" %>
     <p class="small-font no-hover-decoration"><%= link_to "Continue looking for Photographers?", portfolios_path %> </p>
