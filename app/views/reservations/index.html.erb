@@ -38,6 +38,7 @@
                       <p id="index-description-approved-<%=res.id%> ">
                       <% if res.approved %>
                         <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.email}" %> </p>
+                        <p> <%= link_to "Rate this Photographer", new_portfolio_reservation_review_path(res.portfolio, res)  %> </p>
                       <% elsif !res.approved && !res.declined %>
                         <p class="yellow-waiting booking-status"> <%= "Not yet approved" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>) </p>
                       <% else %>
