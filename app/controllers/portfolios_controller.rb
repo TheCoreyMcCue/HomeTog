@@ -9,7 +9,7 @@ class PortfoliosController < ApplicationController
         portfolios.name @@ :query \
         OR portfolios.location @@ :query \
       "
-      @portfolios = Portfolio.joins(:location).where(sql_query, query: "%#{params[:query]}%")
+      @portfolios = Portfolio.where(sql_query, query: "%#{params[:query]}%")
     else
       @portfolios = Portfolio.all
     end
