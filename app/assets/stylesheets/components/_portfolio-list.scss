@@ -8,16 +8,24 @@
   text-decoration: none;
 }
 
+.entire-card {
+  border-radius: 10px;
+  background-color: #f3f6f9;
+}
+
 .index-photo {
   height: 250px;
   width: 450px;
 }
 
 .index-avatar {
-  border-radius: 50%;
   position: absolute;
-  right: 18%;
-  margin-top: 10px;
+  right: 12%;
+  margin-top: -25px;
+}
+.index-avatar-photo {
+  border-radius: 50%;
+  position: relative;
 }
 
 .preview-avatar {
