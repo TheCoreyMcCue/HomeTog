@@ -26,32 +26,31 @@
           <% @reservations.each do |res| %>
 
 
-              <div class="card" id="index-cards">
+              <div class="card entire-card decrease-card-height" id="index-cards">
                 <div class="card-product-infos">
                   <div class="d-flex">
-                    <%= cl_image_tag res.portfolio.photo.key, height: 300, width: 400, crop: :fill %>
-                    <div class="card-body">
-                       <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
-                      <h2 class="mb-3" id="index-photographer"><%= res.portfolio.full_name %></h2>
-                      <% end %>
-                      <p id="index-description"> You requested <%= res.portfolio.full_name %>`s services for <strong> <%= res.date.strftime("%B %-d, %Y") %></strong>. </p>
-                      <p id="index-description-approved-<%=res.id%> ">
-                      <% if res.approved %>
-                        <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.first_name}" %> </p>
-                        <% if res.review == nil %>
-                          <p> <%= link_to "Rate this Photographer", new_portfolio_reservation_review_path(res.portfolio, res)  %> </p>
+                    <%= cl_image_tag res.portfolio.photo.key, class:"decrease-image-size" %>
+                    <div class="card-body ">
+                      <div>
+                        <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
+                        <h2 class="mb-3" id="index-photographer"><%= res.portfolio.full_name %></h2>
                         <% end %>
-
-
-                      <% elsif !res.approved && !res.declined %>
-                        <p class="yellow-waiting booking-status"> <%= "Not yet approved" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>) </p>
-                      <% else %>
-                        <p class="red-declined booking-status"> <%= "Your request was declined by #{res.portfolio.user.first_name}" %> </p>
-                      <% end %>
-                      </p>
-                      <div id="index-price"> € <%= res.portfolio.price %> <span class=""> /day</span></div>
-                      <p id="index-user">Listed by: <%= res.portfolio.user.first_name %></p>
-                      <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-5" %>
+                        <p id="index-description"> You requested <%= res.portfolio.full_name %>`s services for <strong> <%= res.date.strftime("%B %-d, %Y") %></strong>. </p>
+                        <p id="index-description-approved-<%=res.id%> ">
+                        <% if res.approved %>
+                          <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.first_name}" %> </p>
+                          <% if res.review == nil %>
+                            <p> <%= link_to "Rate this Photographer", new_portfolio_reservation_review_path(res.portfolio, res)  %> </p>
+                          <% end %>
+                        <% elsif !res.approved && !res.declined %>
+                          <p class="yellow-waiting booking-status"> <%= "Not yet approved" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>) </p>
+                        <% else %>
+                          <p class="red-declined booking-status"> <%= "Your request was declined by #{res.portfolio.user.first_name}" %> </p>
+                        <% end %>
+                        </p>
+                        <div id="index-price"> € <%= res.portfolio.price %> <span class=""> /day</span></div>
+                        <p id="index-user">Listed by: <%= res.portfolio.user.first_name %></p>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -98,37 +97,41 @@
 
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
       <div class="own-portfolio" id="own-portfolio">
-        <h2 class="my-5">Your Portfolio</h2>
+        <h2 class="my-5">Your Portfolio:</h2>
         <% if @portfolio.blank? %>
         <p>You have not uploaded a photographer portfolio yet</p>
         <% else %>
 
 
             <%= link_to portfolio_path(@portfolio), class: "index-cards" do %>
-              <div class="card" id="index-cards">
+              <div class="card entire-card decrease-card-height" id="index-cards">
                 <div class="card-product-infos">
                   <div class="d-flex">
-                    <%= cl_image_tag @portfolio.photo.key, height: 300, width: 400, crop: :fill %>
+                    <%= cl_image_tag @portfolio.photo.key, class:"decrease-image-size" %>
                     <div class="card-body">
-                      <h2 class="mb-5" id="index-photographer"><%= @portfolio.user.full_name %></h2>
-                      <div id="index-price"> € <%= @portfolio.price %> <span class=""> /day</span></div>
-                      <%= image_tag 'star.png', width: '60px', height: 'auto', class: "pt-5" %>
+                      <div>
+                        <h2 class="mb-5" id="index-photographer"><%= @portfolio.user.full_name %></h2>
+                        <p> <i class="fas fa-star"></i> <%= @portfolio.average_rating %> (<%= @portfolio.reviews.count%>)</p>
+                        <div id="index-price"> € <%= @portfolio.price %> <span class=""> /day</span></div>
+                        <p> <%= @portfolio.description %></p>
+                        <div class="d-flex">
+                          <% if policy(@portfolio).update? %>
+                            <div class="mx-2">
+                              <%= link_to(edit_portfolio_path(@portfolio)) do %>
+                                <i class="far fa-edit"></i>
+                              <% end %>
+                            </div>
+                          <% end %>
 
-                      <% if policy(@portfolio).update? %>
-                        <div class="mx-2">
-                          <%= link_to(edit_portfolio_path(@portfolio)) do %>
-                            <i class="far fa-edit"></i>
+                          <% if policy(@portfolio).destroy? %>
+                            <div>
+                              <%= link_to(@portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                                <i class="far fa-trash-alt"></i>
+                              <% end %>
+                            </div>
                           <% end %>
                         </div>
-                      <% end %>
-
-                      <% if policy(@portfolio).destroy? %>
-                        <div>
-                          <%= link_to(@portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-                            <i class="far fa-trash-alt"></i>
-                          <% end %>
-                        </div>
-                      <% end %>
+                      </div>
 
                     </div>
                   </div>
