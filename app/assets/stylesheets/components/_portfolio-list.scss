@@ -1,11 +1,21 @@
 #index-cards {
-  // height: 250px;
-  width: 550px;
   margin: 5px 0 5px 0;
+}
+
+.entire-card {
+  display: flex;
+  flex: 1;
 }
 
 .index-link:hover {
   text-decoration: none;
+}
+.index-link {
+  padding: 0 !important;
+}
+
+.index-image {
+  margin: 0;
 }
 
 .entire-card {
@@ -14,7 +24,7 @@
 }
 
 .index-photo {
-  height: 250px;
+  height: 275px;
   width: 450px;
 }
 
@@ -26,10 +36,12 @@
 .index-avatar-photo {
   border-radius: 50%;
   position: relative;
+  object-fit: cover;
 }
 
 .preview-avatar {
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .card-body {
