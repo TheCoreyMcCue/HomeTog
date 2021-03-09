@@ -22,3 +22,17 @@
   width: max-content;
   padding:0 5px;
 }
+
+.decrease-card-height{
+  height:250px;
+}
+
+.decrease-image-size{
+  height:250px;
+  width:auto;
+  object-fit:cover;
+}
+
+.card-body a:hover{
+  text-decoration:none;
+}
