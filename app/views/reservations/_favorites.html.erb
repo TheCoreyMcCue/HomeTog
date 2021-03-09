@@ -1,0 +1,22 @@
+<h2 class="my-5">You favorited the following photographers:</h2>
+      <% if @favorites.blank? %>
+        <p>You have not favorited any photographers yet</p>
+      <% else %>
+        <% @favorites.each do |fav| %>
+
+          <%= link_to portfolio_path(fav.portfolio), class: "index-cards" do %>
+          <div class="card entire-card decrease-card-height" id="index-cards">
+            <div class="card-product-infos">
+              <div class="d-flex">
+                <%= cl_image_tag fav.portfolio.photo.key, height: 300, width: 400, crop: :fill %>
+                <div class="d-flex flex-column pl-2">
+                  <h2 class="mb-3" id="index-photographer"><%= fav.portfolio.full_name %></h2>
+                  <div id="index-price"> € <%= fav.portfolio.price %> <span class=""> /day</span></div>
+                  <p id="index-user">Listed by: <%= fav.portfolio.user.first_name %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      <% end %>
