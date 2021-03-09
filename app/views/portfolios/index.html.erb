@@ -6,7 +6,15 @@
 
       <div class="index-image">
         <%#= cl_image_tag 'r2udtt8ocgt13t5k87sa2wp8zp7n', class: "index-photo pr-2" %>
-        <div id="carouselExampleControls<%= portfolio.id %>" class="carousel slide" data-interval="false">
+        <div id="carouselExampleIndicators<%= portfolio.id %>" class="carousel slide" data-interval="false">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators<%= portfolio.id %>" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators<%= portfolio.id %>" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators<%= portfolio.id %>" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators<%= portfolio.id %>" data-slide-to="3"></li>
+              <li data-target="#carouselExampleIndicators<%= portfolio.id %>" data-slide-to="4"></li>
+              <li data-target="#carouselExampleIndicators<%= portfolio.id %>" data-slide-to="5"></li>
+            </ol>
           <div class="carousel-inner">
             <% portfolio.photos.each_with_index do |photo, index|%>
               <div class="carousel-item <%= 'active' if index == 0 %>">
@@ -14,11 +22,11 @@
               </div>
             <% end %>
           </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls<%= portfolio.id %>" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carouselExampleIndicators<%= portfolio.id %>" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls<%= portfolio.id %>" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselExampleIndicators<%= portfolio.id %>" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
             </a>
@@ -26,10 +34,10 @@
       </div>
 
       <div class="index-avatar">
-        <% if current_user.photo.attached? %>
-          <%= cl_image_tag portfolio.user.photo.key, class: 'index-avatar-photo mb-2', id: "navbarDropdown", data: { toggle: "dropdown" }, width: '60px', height: '60px' %>
+        <% if portfolio.user.photo.attached? %>
+          <%= cl_image_tag portfolio.user.photo.key, class: 'index-avatar-photo mb-2', width: '60px', height: '60px' %>
         <% else %>
-        <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar', id: "navbarDropdown", data: { toggle: "dropdown" }, width: '55px', height: '55px'%>
+        <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar', width: '60px', height: '60px'%>
         <% end %>
       </div>
 

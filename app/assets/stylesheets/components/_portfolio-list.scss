@@ -36,10 +36,12 @@
 .index-avatar-photo {
   border-radius: 50%;
   position: relative;
+  object-fit: cover;
 }
 
 .preview-avatar {
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .card-body {
