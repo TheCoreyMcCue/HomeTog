@@ -125,27 +125,6 @@
     </div>
     <% end %>
 
-    <h2>Reviews:</h2>
-    <div class="container">
-      <div class="d-flex ">
-        <div class="row mb-3">
-          <% @portfolio.reservations.each do |res| %>
+   <%= render "reviewcards" %>
 
-          <div class="col-12">
-            <% if res.review != nil %>
-            <div class="d-flex align-items-center">
-              <%= cl_image_tag res.user.photo.key, class: 'preview-avatar', width: '60px', height: '60px' %>
-              <div class="text-left px-2">
-                <p class="mb-0"> <%= res.user.first_name %> </p>
-                <p> <%= res.review.created_at.strftime("%B %-d, %Y") %> </p>
-              </div>
-            </div>
-            <%= res.review.photographer_description%>
-            <% end %>
-          </div>
-
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
