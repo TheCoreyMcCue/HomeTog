@@ -1,5 +1,7 @@
 .show-header-width {
-  max-width: 100%;
+  display: flex;
+  jusitfy-content: center;
+  max-width: 1440px;
 }
 
 .show-image1 {
@@ -19,4 +21,12 @@
 .show-image5, .show-image6 {
   width: 392px;
   height:178px;
+}
+
+@media (min-width: 1440px){
+  .show-header-width {
+    display: flex;
+    jusitfy-content: center;
+    max-width: 100%;
+  }
 }
