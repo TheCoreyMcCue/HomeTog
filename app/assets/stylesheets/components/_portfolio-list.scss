@@ -1,28 +1,33 @@
 #index-cards {
   border-radius: 3px;
+  height: 200px;
+  margin: 55px 0 55px 0;
 }
+
 
 #index-header {
   text-align: center;
-  margin: 10px 10px;
+  // margin: 10px 10px;
   color: black;
-  border-bottom: 0.5px solid gray;
+  // border-bottom: 0.5px solid gray;
   opacity: 0.5;
 }
-#testing {
 
+.card-body {
+  height: 200px;
+  background-color: #f3f6f9;
 }
 
 .card {
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 }
 
-.card-product-infos {
-  box-shadow: 2px 2px 2px gray;
-}
-.card-product-infos:hover {
-  box-shadow: 4px 4px 4px gray;
-}
+// .card-product-infos {
+//   box-shadow: 2px 2px 2px gray;
+// }
+// .card-product-infos:hover {
+//   box-shadow: 4px 4px 4px gray;
+// }
 
 .index-cards {
   text-decoration: none;
@@ -31,51 +36,51 @@
   text-decoration: none;
 }
 
-#index-photographer {
-  color: #355070;
-  font-family: Work Sans;
-}
+// #index-photographer {
+//   color: #355070;
+//   font-family: Work Sans;
+// }
 
-#index-description {
-  color: black;
-  font-family: Nunito;
-  font-size: 16px;
-}
+// #index-description {
+//   color: black;
+//   font-family: Nunito;
+//   font-size: 16px;
+// }
 
-#index-price {
-  color: #69B578;
-  font-size: 18px;
-}
+// #index-price {
+//   color: #69B578;
+//   font-size: 18px;
+// }
 
-#index-user {
-  font-size: 16px;
-  color: gray;
-}
+// #index-user {
+//   font-size: 16px;
+//   color: gray;
+// }
 
-#index-about{
-  font-size: 16px;
-  color: black;
-  font-family: Nunito;
-}
+// #index-about{
+//   font-size: 16px;
+//   color: black;
+//   font-family: Nunito;
+// }
 
-#portfolio-preview {
-  text-align: center;
-  color: #355070;
-  font-family: Work Sans;
-  height: 100vh;
-  // position: -webkit-sticky;
-  position: sticky;
-  top: 55px;
-}
+// #portfolio-preview {
+//   text-align: center;
+//   color: #355070;
+//   font-family: Work Sans;
+//   height: 100vh;
+//   // position: -webkit-sticky;
+//   position: sticky;
+//   top: 55px;
+// }
 
-#preview-header {
-  text-align: center;
-}
+// #preview-header {
+//   text-align: center;
+// }
 
-.tabcontent {
-  display: none;
-    &:first-child { display: block; }
-}
+// .tabcontent {
+//   display: none;
+//     &:first-child { display: block; }
+// }
 
 .preview-avatar {
   border-radius: 50%;
