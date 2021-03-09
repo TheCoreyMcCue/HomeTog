@@ -1,6 +1,6 @@
 class Portfolio < ApplicationRecord
   belongs_to :user
-  has_many_attached :photos
+  has_many_attached :photos, length: { minimum: 6 }
   has_many :favorites, dependent: :destroy
   has_many :reservations, dependent: :destroy
   has_many :reviews, through: :reservations
