@@ -9,7 +9,7 @@
             <div class="card-product-infos">
               <div class="d-flex">
                 <%= cl_image_tag fav.portfolio.photo.key, class:"decrease-image-size" %>
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                     <h2 class="mb-3" id="index-photographer"><%= fav.portfolio.full_name %></h2>
                     <div id="index-price"> $ <%= fav.portfolio.price %> <span class=""> /day</span></div>
                     <p id="index-user">Listed by: <%= fav.portfolio.user.first_name %></p>
