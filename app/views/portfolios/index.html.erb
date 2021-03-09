@@ -2,10 +2,11 @@
   <h1 class="pb-4">Available photographers in you area</h1>
 
   <% @portfolios.each do |portfolio| %>
-    <div class="d-flex my-3 border entire-card">
+    <div class=" my-3 border entire-card">
+
       <div class="index-image">
         <%#= cl_image_tag 'r2udtt8ocgt13t5k87sa2wp8zp7n', class: "index-photo pr-2" %>
-        <div id="carouselExampleControls<%= portfolio.id %>" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls<%= portfolio.id %>" class="carousel slide" data-interval="false">
           <div class="carousel-inner">
             <% portfolio.photos.each_with_index do |photo, index|%>
               <div class="carousel-item <%= 'active' if index == 0 %>">
@@ -28,28 +29,30 @@
         <% if current_user.photo.attached? %>
           <%= cl_image_tag portfolio.user.photo.key, class: 'index-avatar-photo mb-2', id: "navbarDropdown", data: { toggle: "dropdown" }, width: '60px', height: '60px' %>
         <% else %>
-        <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar mb-2', id: "navbarDropdown", data: { toggle: "dropdown" }, width: '55px', height: '55px'%>
+        <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar', id: "navbarDropdown", data: { toggle: "dropdown" }, width: '55px', height: '55px'%>
         <% end %>
       </div>
 
-      <%= link_to portfolio_path(portfolio), target: :_blank, class: "index-link pl-3", onmouseover: "openProfile(event, #{portfolio.id})" do %>
+      <%= link_to portfolio_path(portfolio), target: :_blank, class: "index-link pl-3" do %>
         <div class="" id="index-cards">
-          <h2 class="" id="index-photographer"><%= portfolio.user.full_name %></h2>
+          <div class="d-flex">
+            <h2 class="" id="index-photographer"><%= portfolio.user.full_name %></h2>
 
-                <% if portfolio.favorited?(current_user) %>
-                  <%= link_to favorite_path(portfolio.favorited?(current_user)), method: :delete do  %>
-                    <i class="fas fa-heart mr-3" style="color: #D62839"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to(portfolio_favorites_path(portfolio), method: :post) do %>
-                    <i class="far fa-heart mr-3" style="color: #D62839"></i>
-                  <% end %>
-                <% end %>
-
-          <%= image_tag 'star.png', width: '50px', height: '20px', class: "mb-3" %>
+            <% if portfolio.favorited?(current_user) %>
+              <%= link_to favorite_path(portfolio.favorited?(current_user)),class: "index-heart", method: :delete do  %>
+                <i class="fas fa-heart pl-2" style="color: #D62839"></i>
+              <% end %>
+            <% else %>
+              <%= link_to(portfolio_favorites_path(portfolio), class: "index-heart", method: :post) do %>
+                <i class="far fa-heart pl-2" style="color: #D62839"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <%#= image_tag 'star.png', width: '50px', height: '20px', class: "" %>
+          <p> <i class="fas fa-star"></i> <%= portfolio.average_rating %> (<%= portfolio.reviews.count%>)</p>
           <div id="index-price"> <strong> $ <%= portfolio.price %> </strong><span class=""> /day</span></div>
           <p id="index-user">Listed by: <%= portfolio.user.email %></p>
-          <p id="index-description"> <%= portfolio.description&.truncate(165, separator: " ") %> </p>
+          <p id="index-description"> <%= portfolio.description&.truncate(300, separator: " ") %> </p>
         </div>
       <% end %>
     </div>
