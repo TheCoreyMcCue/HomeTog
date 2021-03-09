@@ -1,0 +1,17 @@
+<div class="container show_page-container">
+  <button onclick="openForm()" id="chatbox-button" class="btn btn-white">
+    <div class="d-flex">
+      <i class="far fa-comment-dots pr-2"></i>
+      <div style="color: #355070">Leave me a message</div>
+    </div>
+  </button>
+  <div class="chat-popup" id="myForm">
+    <form action="@portfolio" class="form-container">
+      <h1>Chat</h1>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+      <button type="submit" class="btn">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+</div>
