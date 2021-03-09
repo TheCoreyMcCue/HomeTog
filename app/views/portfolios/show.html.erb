@@ -1,117 +1,52 @@
-<div class="container">
-  <div class="h1-favorite-wrapper d-flex mx-1">
-    <div class=" d-flex w-100">
-      <% if @portfolio.user.photo.attached? %>
-        <%= cl_image_tag @portfolio.user.photo.key, class: "show-page-avatar mr-3" %>
-      <% else %>
-        <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar mb-2', width: '60px', height: '60px'%>
-      <% end %>
-      <h1 class="show-page-h1"><%= @portfolio.user.full_name %></h1>
-    </div>
-    <% if user_signed_in? %>
-      <% if @portfolio.favorited?(current_user) %>
-        <%= link_to favorite_path(@portfolio.favorited?(current_user)), method: :delete do  %>
-        <i class="fas fa-heart mr-3" style="color: #D62839"></i>
-      <% end %>
-      <% else %>
-        <%= link_to(portfolio_favorites_path(@portfolio), method: :post) do %>
-        <i class="far fa-heart mr-3" style="color: #D62839"></i>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+<!-- favorite and name header -->
+<%= render "favorite" %>
 
 <!-- Here starts the Image Header and the Photographer name and Favorite option -->
 <%= render "showpagecarousel" %>
 
+<!-- Here is the Photographer Description -->
 <%= render "photographerdescription" %>
 
+<!-- Here is the chatbox when clicked on the icon -->
+<%= render "chatbox" %>
 
-
-      <!-- <i class="far fa-heart">
-      </i> -->
-
-
-
-    <div class="d-flex mt-4 show-card-wrapper">
-      <div class="content-wrapper">
-        <div class="d-flex flex-column">
-          <div class="d-flex ">
-
-
-            <div class="photographer-name-location-wrapper">
-              <h2 class="pl-3 pt-2 show-card-content-h2">
-                <%= @portfolio.user.full_name %>
-              </h2>
-              <p class="pl-3">
-                Located in <%= @portfolio.location %>
-              </p>
-            </div>
-            <div class="chat-icon-position">
-              <button onclick="openForm()" id="chatbox-button" class="btn btn-white">
-                <i class="far fa-comment-dots pr-2">
-                </i>
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="reservation-form">
-        <%= simple_form_for ([@portfolio, @reservations]) do |f| %>
-        <%= f.input :date, as: :date, html5: true %>
-        <div class="details-show-price py-2 pr-1">
-
-          <h4 class="text-center" id="priceCalculator" data-price="<%= @portfolio.price %>">Total: $  <%= number_with_precision(@portfolio.price, precision: 0) %></h4>
-        </div>
-        <%= f.submit "Book Now", class:"btn btn-primary w-100 button-design" %>
-        <% end %>
-      </div>
-
+<div class="container show_page-container">
+  <div class="d-flex">
+    <div class="review-card-box">
+      <%= render "reviewcards" %>
     </div>
-
-    <!-- <button onclick="openForm()" id="chatbox-button" class="btn btn-white mt-5"> <i class="far fa-comment-dots pr-2"></i>How may I help?</button> -->
-
-    <div class="chat-popup" id="myForm">
-      <form action="@portfolio" class="form-container">
-        <h1>Chat</h1>
-
-        <label for="msg"><b>Message</b></label>
-        <textarea placeholder="Type message.." name="msg" required></textarea>
-
-        <button type="submit" class="btn">Send</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-      </form>
+    <div class="">
+    <%= render "bookingform" %>
     </div>
+  </div>
+</div>
 
-
-    <% if current_user == @portfolio.user %>
-    <div class="d-flex">
-      <% if policy(@portfolio).update? %>
-      <div class="mx-2">
-        <%= link_to(edit_portfolio_path(@portfolio)) do %>
-        <i class="far fa-edit"></i>
-        <% end %>
-      </div>
-      <% end %>
-
-      <% if policy(@portfolio).destroy? %>
-      <div class="mb-3">
-        <%= link_to(@portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-        <i class="far fa-trash-alt">
-        </i>
-        <% end %>
-      </div>
-      <% end %>
-
-    </div>
+<div class="container show_page-container">
+  <% if current_user == @portfolio.user %>
+<div class="d-flex">
+  <% if policy(@portfolio).update? %>
+  <div class="mx-2">
+    <%= link_to(edit_portfolio_path(@portfolio)) do %>
+    <i class="far fa-edit"></i>
     <% end %>
+  </div>
+  <% end %>
+
+  <% if policy(@portfolio).destroy? %>
+  <div class="mb-3">
+    <%= link_to(@portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+    <i class="far fa-trash-alt">
+    </i>
+    <% end %>
+  </div>
+  <% end %>
+
+</div>
+<% end %>
+</div>
 
 
-    <%= render "reviewcards"  %>
+
 
 
 
