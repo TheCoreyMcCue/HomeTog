@@ -1,13 +1,20 @@
 <%= render "showpagecarousel" %>
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> d3a56809dbd06b07806211f610664d5ba6227664
 <div class="container">
   <div class="h1-favorite-wrapper d-flex mx-1">
     <div class="w-100">
       <h1 class="show-page-h1">
         <%= @portfolio.user.full_name %>
       </h1>
-      <%= @portfolio.average_rating %>
+
     </div>
     <% if user_signed_in? %>
       <% if @portfolio.favorited?(current_user) %>
@@ -26,13 +33,13 @@
       </i> -->
     </div>
 
-    <div id="carouselExampleControls<%= @portfolio.id %>" class="carousel slide" data-ride="carousel">
+   <!--  <div id="carouselExampleControls<%= @portfolio.id %>" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-        <% @portfolio.photos.each_with_index do |photo, index|%>
-        <div class="carousel-item <%= 'active' if index == 0 %>">
-          <%= cl_image_tag photo.key, class: "d-block w-100", class: "show-page-image-design" %>
+        <%# @portfolio.photos.each_with_index do |photo, index|%>
+        <div class="carousel-item <%#= 'active' if index == 0 %>">
+          <%#= cl_image_tag photo.key, class: "d-block w-100", class: "show-page-image-design" %>
         </div>
-        <% end %>
+        <%# end %>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls<%= @portfolio.id %>" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,7 +49,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-    </div>
+    </div> -->
 
     <div class="d-flex mt-4 show-card-wrapper">
       <div class="content-wrapper">
@@ -128,27 +135,8 @@
     </div>
     <% end %>
 
-    <h2>Reviews:</h2>
-    <div class="container">
-      <div class="d-flex ">
-        <div class="row mb-3">
-          <% @portfolio.reservations.each do |res| %>
 
-          <div class="col-12">
-            <% if res.review != nil %>
-            <div class="d-flex align-items-center">
-              <%= cl_image_tag res.user.photo.key, class: 'preview-avatar', width: '60px', height: '60px' %>
-              <div class="text-left px-2">
-                <p class="mb-0"> <%= res.user.first_name %> </p>
-                <p> <%= res.review.created_at.strftime("%B %-d, %Y") %> </p>
-              </div>
-            </div>
-            <%= res.review.photographer_description%>
-            <% end %>
-          </div>
+    <%= render "reviewcards"  %>
 
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+

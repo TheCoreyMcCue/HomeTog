@@ -1,0 +1,46 @@
+<h2>Reviews:</h2>
+<div class="d-flex justify-content-between">
+  <p>Average rating:</p>
+  <p> <strong class="bigger-font"> <%= @portfolio.average_rating %> </strong>/ 5</p>
+</div>
+
+<div>
+  <div class="mb-3">
+    <% @portfolio.reservations.each do |res| %>
+
+      <div>
+        <% if res.review != nil %>
+          <div class="d-flex align-items-center mb-3">
+            <%= cl_image_tag res.user.photo.key, class: 'preview-avatar', width: '60px', height: '60px' %>
+            <div class=" px-3 w-100">
+              <div class="d-flex justify-content-between">
+                <p class="my-0"> <%= res.user.first_name %> </p>
+                <div>
+                  <% case res.review.photographer_rating %>
+                    <% when 0 %>
+                      <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>
+                    <% when 1 %>
+                      <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>
+                    <% when 2 %>
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>
+                    <% when 3 %>
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>
+                    <% when 4 %>
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i>
+                    <% when 5 %>
+                      <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                  <% end %>
+                </div>
+              </div>
+
+              <p class="light-font my-0"> <%= res.review.created_at.strftime("%B %-d, %Y") %> </p>
+              <p class="my-0 small-font"> <%= res.review.photographer_description%> </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
