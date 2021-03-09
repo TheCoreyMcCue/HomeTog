@@ -48,7 +48,7 @@
                           <p class="red-declined booking-status"> <%= "Your request was declined by #{res.portfolio.user.first_name}" %> </p>
                         <% end %>
                         </p>
-                        <div id="index-price"> € <%= res.portfolio.price %> <span class=""> /day</span></div>
+                        <div id="index-price"> $ <%= res.portfolio.price %> <span class=""> /day</span></div>
                         <p id="index-user">Listed by: <%= res.portfolio.user.first_name %></p>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                       <div>
                         <h2 class="mb-5" id="index-photographer"><%= @portfolio.user.full_name %></h2>
                         <p> <i class="fas fa-star"></i> <%= @portfolio.average_rating %> (<%= @portfolio.reviews.count%>)</p>
-                        <div id="index-price"> € <%= @portfolio.price %> <span class=""> /day</span></div>
+                        <div id="index-price"> $ <%= @portfolio.price %> <span class=""> /day</span></div>
                         <p> <%= @portfolio.description %></p>
                         <div class="d-flex">
                           <% if policy(@portfolio).update? %>
