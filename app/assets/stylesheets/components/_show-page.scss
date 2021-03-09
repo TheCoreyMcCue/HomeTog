@@ -11,10 +11,10 @@
 
 .fa-heart {
   font-size: 26px;
-  position: absolute;
-  top:20px;
-  right: 5px;
-  color: #355070;
+  //position: absolute;
+  //top:20px;
+  //right: 5px;
+  // color: #355070;
 }
 
 .description-container {
@@ -40,6 +40,12 @@
   position: absolute;
   top:0;
   right:0;
+}
+
+.show-page-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 @media (max-width: 575px){
