@@ -6,24 +6,27 @@
 
 .show-image1 {
   width: 800px;
-  // height: 500px;
+  object-fit: cover;
 }
 
 .show-image2, .show-image3 {
   width: 300px;
   height: 300px;
+  object-fit: cover;
 }
 
 .show-image4 {
   width: 616px;
+  object-fit: cover;
 }
 
 .show-image5, .show-image6 {
   width: 392px;
   height:178px;
+  object-fit: cover;
 }
 
-@media (min-width: 1440px){
+@media (max-width: 2000px){
   .show-header-width {
     display: flex;
     jusitfy-content: center;
