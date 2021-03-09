@@ -1,11 +1,11 @@
 
 <!-- <div id="carouselExampleControls<%= @portfolio.id %>" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-    <%# @portfolio.photos.each_with_index do |photo, index|%>
+    <% @portfolio.photos.each_with_index do |photo, index|%>
     <div class="carousel-item <%#= 'active' if index == 0 %>">
-      <%#= cl_image_tag photo.key, class: "d-block w-100", class: "show-page-image-design" %>
+      <%= cl_image_tag photo.key, class: "d-block w-100", class: "show-page-image-design" %>
     </div>
-    <%# end %>
+    <% end %>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls<%= @portfolio.id %>" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -15,8 +15,8 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
- -->
+</div> -->
+
 
  <div class="d-flex show-header-width">
   <div class="d-flex flex-column">
