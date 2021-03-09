@@ -1,0 +1,107 @@
+<div id="porfolio-card" class="container-fluid">
+  <h1 id="index-header" class="pb-3">Available Photographers In Your Neighborhood</h1>
+  <div class="row ml-1 mt-2 justify-content-center">
+    <div class="col-9">
+      <% @portfolios.each do |portfolio| %>
+
+      <div class="card" id="index-cards">
+        <div class="card-product-infos">
+          <div class="d-flex index-cards tablinks">
+            <% if  portfolio.photos.attached? %>
+            <%#= cl_image_tag portfolio.photo.key, height: 200, width: 400, crop: :fill %>
+              <div id="carouselExampleControls<%= portfolio.id %>" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+              <% portfolio.photos.each_with_index do |photo, index|%>
+                  <div class="carousel-item <%= 'active' if index == 0 %>">
+                    <%= cl_image_tag photo.key, class: "d-block w-100", height: 390, width: 600, crop: :fill %>
+                  </div>
+              <% end %>
+              </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls<%= portfolio.id %>" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls<%= portfolio.id %>" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <% else %>
+            <%= cl_image_tag 'r2udtt8ocgt13t5k87sa2wp8zp7n', height: 150, width: 225, crop: :fill %>
+            <% end %>
+            <%= link_to portfolio_path(portfolio), target: :_blank, class: "", onmouseover: "openProfile(event, #{portfolio.id})" do %>
+            <div class="card-body">
+              <h2 class="" id="index-photographer"><%= portfolio.user.full_name %></h2>
+              <p id="index-description"> <%= portfolio.description&.truncate(120, separator: " ") %> </p>
+              <div id="index-price"> $ <%= portfolio.price %> <span class=""> /day</span></div>
+              <p id="index-user">Listed by: <%= portfolio.user.email %></p>
+              <%#= image_tag 'star.png', width: '100px', height: 'auto', class: "pt-5" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="border-left col-md-6" id="portfolio-preview">
+      <section>
+        <% @portfolios.each do |portfolio| %>
+          <div id="<%= portfolio.id %>" class="tabcontent">
+            <div class="d-flex justify-content-between">
+              <% if  portfolio.user.photo.attached? %>
+                <%= cl_image_tag portfolio.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
+              <% else %>
+                <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar mb-2', width: '60px', height: '60px'%>
+              <% end %>
+            <div>
+              <h2 class="mb-3 mr-5 pr-4" id="preview-header"> <%= portfolio.user.full_name %> </h2>
+              </div>
+              <% if user_signed_in? %>
+              <!-- favorited code -->
+                <% if portfolio.favorited?(current_user) %>
+                  <%= link_to favorite_path(portfolio.favorited?(current_user)), method: :delete do  %>
+                    <i class="fas fa-heart mr-3" style="color: #D62839"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to(portfolio_favorites_path(portfolio), method: :post) do %>
+                    <i class="far fa-heart mr-3" style="color: #D62839"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+                  <!-- favorited code -->
+              <%#= image_tag 'avatar-pic.png', width: '100px', height: 'auto', class: "pt-3" %>
+            </div>
+              <p id="index-price">$ <%= portfolio.price %> /day</p>
+            <p id="index-description"><%= portfolio.description&.truncate(140, separator: " ") %></p>
+            <div id="carouselExampleControls<%= portfolio.id %>" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+              <% portfolio.photos.each_with_index do |photo, index|%>
+                  <div class="carousel-item <%= 'active' if index == 0 %>">
+                    <%= cl_image_tag photo.key, class: "d-block w-100", height: 390, width: 600, crop: :fill %>
+                  </div>
+              <% end %>
+              </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls<%= portfolio.id %>" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls<%= portfolio.id %>" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <%= link_to "Book This Photographer!", portfolio_path(portfolio), class: "btn btn-primary mt-3 mx-5 px-5 mt-5 button-design" %>
+          </div>
+        <% end %>
+      </section>
+    </div>
