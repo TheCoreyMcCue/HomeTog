@@ -1,0 +1,1 @@
+document.getElementById('portfolio-favorites-<%= @portfolio.id %>').innerHTML = '<%= link_to favorite_path(@portfolio.favorited?(current_user)), remote: true, class: "index-heart", method: :delete do  %> <i class="fas fa-heart pl-2" style="color: #D62839"></i> <% end %>'

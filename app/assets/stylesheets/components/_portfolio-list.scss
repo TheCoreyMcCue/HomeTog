@@ -39,6 +39,15 @@
   object-fit: cover;
 }
 
+.index-heart {
+  position: absolute;
+  z-index: 100;
+  transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1.3);
+  }
+}
+
 .preview-avatar {
   border-radius: 50%;
   object-fit: cover;
