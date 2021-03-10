@@ -21,6 +21,7 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.find(params[:id])
     authorize(@portfolio)
     @favorite = Favorite.new
+    @portfolio = Chatroom.create(name: "Conversation")
   end
 
   def new
