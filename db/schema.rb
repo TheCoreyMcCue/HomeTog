@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_093013) do
+ActiveRecord::Schema.define(version: 2021_03_10_085838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 2021_03_08_093013) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "portfolio_id", null: false
@@ -52,12 +58,23 @@ ActiveRecord::Schema.define(version: 2021_03_08_093013) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "portfolios", force: :cascade do |t|
     t.string "name"
     t.string "location"
     t.bigint "user_id", null: false
     t.text "description"
     t.integer "price"
+    t.string "images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_portfolios_on_user_id"
@@ -92,7 +109,6 @@ ActiveRecord::Schema.define(version: 2021_03_08_093013) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "photo"
@@ -106,6 +122,8 @@ ActiveRecord::Schema.define(version: 2021_03_08_093013) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "portfolios"
   add_foreign_key "favorites", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "portfolios", "users"
   add_foreign_key "reservations", "portfolios"
   add_foreign_key "reservations", "users"

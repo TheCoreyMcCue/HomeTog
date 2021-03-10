@@ -8,7 +8,9 @@
 <%= render "photographerdescription" %>
 
 <!-- Here is the chatbox when clicked on the icon -->
-<%= render "chatbox" %>
+<%#= render "chatbox" %>
+
+<%= link_to "Message me", chatroom_path(@chatroom) %>
 
 <div class="container show_page-container mt-5">
   <div class="d-flex">
