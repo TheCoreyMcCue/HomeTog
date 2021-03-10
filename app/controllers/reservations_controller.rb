@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
     @portfolio = current_user.portfolio
     @favorites = current_user.favorites
     @reservation = Reservation.new
+    @chatroom = Chatroom.find_or_create_by(portfolio: @portfolio, user: current_user)
   end
 
   def show

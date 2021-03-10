@@ -1,0 +1,87 @@
+<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <div class="own-portfolio" id="own-portfolio">
+        <h2 class="my-5">Your Portfolio:</h2>
+        <% if @portfolio.blank? %>
+        <p>You have not uploaded a photographer portfolio yet</p>
+        <% else %>
+
+        <div class="container">
+          <div class="text-center">
+          <%= cl_image_tag @portfolio.photo.key, class: "carousel-profile-size", width: '700px', height: 'auto'%>
+          <p id="index-price">$ <%= @portfolio.price %> /day</p>
+          <p id="index-description"><%= @portfolio.description&.truncate(140, separator: " ") %></p>
+          </div>
+
+          <div class="container show_page-container mt-5">
+              <div class="review-card-box-myportfolio">
+                <%= render "portfolios/reviewcards" %>
+              </div>
+          </div>
+
+          <div class="container show_page-container">
+            <% if current_user == @portfolio.user %>
+              <div class="d-flex">
+            <% if policy(@portfolio).update? %>
+              <div class="mx-2">
+                <%= link_to(edit_portfolio_path(@portfolio)) do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
+              </div>
+            <% end %>
+            <% if policy(@portfolio).destroy? %>
+              <div class="mb-3">
+                <%= link_to(@portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              </div>
+            <% end %>
+
+            </div>
+            <% end %>
+          </div>
+
+        </div>
+
+
+
+           <!--  <%= link_to portfolio_path(@portfolio), class: "index-cards" do %>
+              <div class="card entire-card decrease-card-height" id="index-cards">
+                <div class="card-product-infos">
+                  <div class="d-flex">
+                    <%= cl_image_tag @portfolio.photo.key, class:"decrease-image-size" %>
+                    <div class="card-body">
+                      <div>
+                        <h2 class="mb-5" id="index-photographer"><%= @portfolio.user.full_name %></h2>
+                        <p> <i class="fas fa-star"></i> <%= @portfolio.average_rating %> (<%= @portfolio.reviews.count%> <%= @portfolio.reviews.count > 1 ? "reviews" : "review" %>)</p>
+                        <div id="index-price"> $ <%= @portfolio.price %> <span class=""> /day</span></div>
+                        <p> <%= @portfolio.description %></p>
+                        <div class="d-flex">
+                          <% if policy(@portfolio).update? %>
+                            <div class="mx-2">
+                              <%= link_to(edit_portfolio_path(@portfolio)) do %>
+                                <i class="far fa-edit"></i>
+                              <% end %>
+                            </div>
+                          <% end %>
+
+                          <% if policy(@portfolio).destroy? %>
+                            <div>
+                              <%= link_to(@portfolio, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+                                <i class="far fa-trash-alt"></i>
+                              <% end %>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %> -->
+
+
+
+        <% end %>
+      </div>
+    </div>
