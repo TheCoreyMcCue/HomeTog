@@ -3,10 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_one :portfolio
-  has_many :reservations
-  has_many :favorites
-  has_one_attached :photo
+  has_one :portfolio, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_one_attached :photo, dependent: :destroy
 
   def full_name
     if first_name && last_name
