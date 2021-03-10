@@ -31,77 +31,13 @@
         <%  if @reservations.blank? %>
           <p>You have not made any reservations yet.</p>
         <% else %>
-          <% @reservations.each do |res| %>
-
-
-              <div class="card entire-card decrease-card-height" id="index-cards">
-                <div class="card-product-infos">
-                  <div class="d-flex">
-                    <%= cl_image_tag res.portfolio.photo.key, class:"decrease-image-size" %>
-                    <div class="card-body ">
-                      <div>
-                        <%= link_to portfolio_path(res.portfolio), class: "index-cards" do %>
-                        <h2 class="mb-3" id="index-photographer"><%= res.portfolio.full_name %></h2>
-                        <% end %>
-                        <p id="index-description"> You requested <%= res.portfolio.full_name %>`s services for <strong> <%= res.date.strftime("%B %-d, %Y") %></strong>. </p>
-                        <p id="index-description-approved-<%=res.id%> ">
-                        <% if res.approved %>
-                          <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.first_name}" %> </p>
-                          <% if res.review == nil %>
-                            <p> <%= link_to "Rate this Photographer", new_portfolio_reservation_review_path(res.portfolio, res)  %> </p>
-                          <% end %>
-                        <% elsif !res.approved && !res.declined %>
-                          <p class="yellow-waiting booking-status"> <%= "Not yet approved" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>) </p>
-                        <% else %>
-                          <p class="red-declined booking-status"> <%= "Your request was declined by #{res.portfolio.user.first_name}" %> </p>
-                        <% end %>
-                        </p>
-                        <div id="index-price"> $ <%= res.portfolio.price %> <span class=""> /day</span></div>
-                        <p id="index-user">Listed by: <%= res.portfolio.user.first_name %></p>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-          <% end %>
+          <%= render "reservations-cards" %>
         <% end %>
       </div>
 
     </div>
 
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="requests " id="requests">
-        <h2 class="my-5">Your services are requested for the following dates:</h2>
-        <% if @requests.blank? %>
-          <p>No one has requested your profile yet.</p>
-        <% else %>
-          <% @requests.each do |request| %>
-            <div class="d-flex align-items-center">
-              <%= cl_image_tag request.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
-              <div class="request-card text-left px-5 d-flex justify-content-between my-2 align-items-center">
-                <p> <strong><%= request.user.first_name %></strong> requested your Services on <strong> <%= request.date.strftime("%B %-d, %Y") %> </strong> </p>
-                <div id="approved-<%= request.id %>">
-                  <%if !request.approved && !request.declined  %>
-                    <%= link_to (reservation_path(request, approve: true)), method: :patch, remote: true, class: "approve-button" do%>
-                      <i class="far fa-check-circle"></i>
-                    <% end %>
-                    <%= link_to (reservation_path(request, approve: false)), method: :patch, remote: true, class: "reject-button" do %>
-                      <i class="far fa-times-circle"></i>
-                    <% end %>
-                  <% elsif request.approved %>
-                    <p>Approved ✓</p>
-                  <% elsif request.declined %>
-                    <p>Declined ✗</p>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <%= render "request-cards" %>
 
     <%= render "myprofile" %>
 
