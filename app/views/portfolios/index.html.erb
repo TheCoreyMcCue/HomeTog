@@ -52,7 +52,7 @@
           <p> <i class="fas fa-star"></i> <%= portfolio.average_rating %> (<%= portfolio.reviews.count%> <%= portfolio.reviews.count > 1 ? "reviews" : "review" %>)</p>
           <div id="index-price"> <strong> $ <%= portfolio.price %> </strong><span class=""> /day</span></div>
           <p id="index-user">Listed by: <%= portfolio.user.email %></p>
-          <p id="index-description"> <%= portfolio.description&.truncate(300, separator: " ") %> </p>
+          <p id="index-description"> <%= portfolio.description&.truncate(220, separator: " ") %> </p>
         </div>
       <% end %>
       <div id="portfolio-favorites-<%= portfolio.id %>" class="index-favorites">
