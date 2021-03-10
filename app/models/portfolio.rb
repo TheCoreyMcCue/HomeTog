@@ -5,6 +5,7 @@ class Portfolio < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :reviews, through: :reservations, dependent: :destroy
   validates :photos, length: { minimum: 6 }
+  has_many :chatrooms, dependent: :destroy
 
   def photo
     photos.first
