@@ -41,13 +41,15 @@
 
 
 .index-heart {
-  position: absolute;
   z-index: 100;
   transition: all .2s ease-in-out;
   right: 240px;
   &:hover {
     transform: scale(1.3);
   }
+}
+.index-heart-position {
+  position:absolute;
 }
 
 .preview-avatar {
