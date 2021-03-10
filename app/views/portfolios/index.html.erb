@@ -55,7 +55,7 @@
           <p id="index-description"> <%= portfolio.description&.truncate(300, separator: " ") %> </p>
         </div>
       <% end %>
-      <div id="portfolio-favorites-<%= portfolio.id %>">
+      <div id="portfolio-favorites-<%= portfolio.id %>" class="index-heart-position">
         <% if portfolio.favorited?(current_user) %>
           <%= link_to favorite_path(portfolio.favorited?(current_user)), remote: true, class: "index-heart", method: :delete do  %>
             <i class="fas fa-heart pl-2" style="color: #D62839"></i>
@@ -71,8 +71,6 @@
 
 </div>
 
-
-<div></div>
 
 
 
