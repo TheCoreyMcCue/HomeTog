@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_one_attached :photo, dependent: :destroy
+  has_many :chatrooms, dependent: :destroy
 
   def full_name
     if first_name && last_name
