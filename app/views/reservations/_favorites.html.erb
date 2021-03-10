@@ -15,33 +15,25 @@
                       <div class="d-flex">
                         <h2 class="mb-3" id="index-photographer"><%= fav.portfolio.full_name %></h2>
                         <p> <i class="fas fa-star"></i> <%= @portfolio.average_rating %> (<%= @portfolio.reviews.count%> <%= @portfolio.reviews.count > 1 ? "reviews" : "review" %>)</p>
-                        <% if fav.portfolio.favorited?(current_user) %>
-                          <%= link_to favorite_path(fav.portfolio.favorited?(current_user)),class: "index-heart", method: :delete do  %>
-                            <i class="fas fa-heart pl-2" style="color: #D62839"></i>
+                        <div id="portfolio-favorites-<%= @portfolio.id %>">
+                          <% if fav.portfolio.favorited?(current_user) %>
+                            <%= link_to favorite_path(fav.portfolio.favorited?(current_user)), remote: true, class: "index-heart", id: "index-heart-favorite", method: :delete do  %>
+                              <i class="fas fa-heart pl-2" style="color: #D62839"></i>
+                            <% end %>
+                          <% else %>
+                            <%= link_to(portfolio_favorites_path(fav.portfolio), remote: true, class: "index-heart", id: "index-heart-favorite", method: :post) do %>
+                              <i class="far fa-heart pl-2" style="color: #D62839"></i>
+                            <% end %>
                           <% end %>
-                        <% else %>
-                          <%= link_to(portfolio_favorites_path(fav.portfolio), class: "index-heart", method: :post) do %>
-                            <i class="far fa-heart pl-2" style="color: #D62839"></i>
-                          <% end %>
-                        <% end %>
+                        </div>
                       </div>
                       <div id="index-price"> $ <%= fav.portfolio.price %> <span class=""> /day</span></div>
                       <p id="index-user">Listed by: <%= fav.portfolio.user.first_name %></p>
-
-
                       <div>
-                        <%= link_to (portfolio_path(fav.portfolio)) do  %>
-                        <button onclick="openForm()" id="chatbox-button" class="btn btn-white">
-                          <div class="d-flex">
-                            <i class="far fa-comment-dots pr-2"></i>
-                            <div style="color: #355070">Leave me a message</div>
-                          </div>
-                        </button>
+                        <%= link_to (chatroom_path(@chatroom)) do %>
+                          <i class="far fa-comment-dots"></i>
                         <% end %>
                       </div>
-
-
-
                     </div>
 
                     <div class=" booking-box-favorites">
