@@ -46,15 +46,7 @@
           <div class="d-flex">
             <h2 class="" id="index-photographer"><%= portfolio.user.full_name %></h2>
 
-            <% if portfolio.favorited?(current_user) %>
-              <%= link_to favorite_path(portfolio.favorited?(current_user)),class: "index-heart", method: :delete do  %>
-                <i class="fas fa-heart pl-2" style="color: #D62839"></i>
-              <% end %>
-            <% else %>
-              <%= link_to(portfolio_favorites_path(portfolio), class: "index-heart", method: :post) do %>
-                <i class="far fa-heart pl-2" style="color: #D62839"></i>
-              <% end %>
-            <% end %>
+
           </div>
           <%#= image_tag 'star.png', width: '50px', height: '20px', class: "" %>
           <p> <i class="fas fa-star"></i> <%= portfolio.average_rating %> (<%= portfolio.reviews.count%> <%= portfolio.reviews.count > 1 ? "reviews" : "review" %>)</p>
@@ -63,8 +55,20 @@
           <p id="index-description"> <%= portfolio.description&.truncate(300, separator: " ") %> </p>
         </div>
       <% end %>
+      <div id="portfolio-favorites-<%= portfolio.id %>">
+        <% if portfolio.favorited?(current_user) %>
+          <%= link_to favorite_path(portfolio.favorited?(current_user)), remote: true, class: "index-heart", method: :delete do  %>
+            <i class="fas fa-heart pl-2" style="color: #D62839"></i>
+          <% end %>
+        <% else %>
+          <%= link_to(portfolio_favorites_path(portfolio), remote: true, class: "index-heart", method: :post) do %>
+            <i class="far fa-heart pl-2" style="color: #D62839"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   <% end %>
+
 </div>
 
 
