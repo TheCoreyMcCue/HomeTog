@@ -9,18 +9,8 @@
       <h1 class="show-page-h1"><%= @portfolio.user.full_name %></h1>
       <p class="show-page-portfolio-location"><%= @portfolio.location %></p>
     </div>
-    <div id="portfolio-favorites-<%= @portfolio.id %>">
-      <% if user_signed_in? %>
-        <% if @portfolio.favorited?(current_user) %>
-          <%= link_to favorite_path(@portfolio.favorited?(current_user)), remote: true, method: :delete do  %>
-          <i class="fas fa-heart favorite-icon mr-3" style="color: #D62839"></i>
-        <% end %>
-        <% else %>
-          <%= link_to(portfolio_favorites_path(@portfolio), remote: true, method: :post) do %>
-          <i class="far fa-heart favorite-icon mr-3" style="color: #D62839"></i>
-          <% end %>
-        <% end %>
-      <% end %>
+    <div id="portfolio-favorites-<%= @portfolio.id %>" class="favorite-icon">
+      <%= render 'favorites/favoriteJS', portfolio: @portfolio %>
     </div>
   </div>
 </div>
