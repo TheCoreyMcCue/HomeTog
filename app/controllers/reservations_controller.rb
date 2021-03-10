@@ -4,6 +4,7 @@ class ReservationsController < ApplicationController
     @requests = Reservation.joins(:portfolio).where(portfolio: { user: current_user })
     @portfolio = current_user.portfolio
     @favorites = current_user.favorites
+    @reservation = Reservation.new
   end
 
   def show
