@@ -1,0 +1,35 @@
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="requests " id="requests">
+    <h2 class="my-5">Your services are requested for the following dates:</h2>
+    <% if @requests.blank? %>
+      <p>No one has requested your profile yet.</p>
+    <% else %>
+      <% @requests.each do |request| %>
+        <div class="d-flex align-items-center">
+          <% if  request.user.photo.attached? %>
+             <%= cl_image_tag request.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
+          <% else %>
+            <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar mb-2', width: '60px', height: '60px'%>
+          <% end %>
+          <div class="request-card text-left px-5 d-flex justify-content-between my-2 align-items-center">
+            <p> <strong><%= request.user.first_name %></strong> requested your Services on <strong> <%= request.date.strftime("%B %-d, %Y") %> </strong> </p>
+            <div id="approved-<%= request.id %>">
+              <%if !request.approved && !request.declined  %>
+                <%= link_to (reservation_path(request, approve: true)), method: :patch, remote: true, class: "approve-button" do%>
+                  <i class="far fa-check-circle"></i>
+                <% end %>
+                <%= link_to (reservation_path(request, approve: false)), method: :patch, remote: true, class: "reject-button" do %>
+                  <i class="far fa-times-circle"></i>
+                <% end %>
+              <% elsif request.approved %>
+                <p>Approved ✓</p>
+              <% elsif request.declined %>
+                <p>Declined ✗</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
