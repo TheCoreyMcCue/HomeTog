@@ -27,6 +27,7 @@ import { openProfile } from './indexHover'
 import { priceCalculator } from '../plugins/price_calculator';
 import { openForm, closeForm } from '../plugins/chat_box';
 import { initStarRating } from '../plugins/init_star_rating';
+import { initChatroomCable } from '../channels/chatroom_channel';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -37,6 +38,7 @@ document.addEventListener('turbolinks:load', () => {
   window.openForm = openForm;
   window.closeForm = closeForm;
   initStarRating();
+  initChatroomCable();
 });
 console.log('end of file');
 
