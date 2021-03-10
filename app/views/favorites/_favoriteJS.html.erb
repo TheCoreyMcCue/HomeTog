@@ -1,9 +1,12 @@
-<% if @portfolio.favorited?(current_user) %>
+<% if portfolio.favorited?(current_user) %>
   <%= link_to favorite_path(portfolio.favorited?(current_user)), remote: true, class: "index-heart", method: :delete do  %>
     <i class="fas fa-heart pl-2" style="color: #D62839"></i>
   <% end %>
 <% else %>
-  <%= link_to(@portfolio_favorites_path(@portfolio), remote: true, class: "index-heart", method: :post) do %>
+  <%= link_to(portfolio_favorites_path(portfolio), remote: true, class: "index-heart", method: :post) do %>
     <i class="far fa-heart pl-2" style="color: #D62839"></i>
   <% end %>
 <% end %>
+
+
+<%#= render 'favoriteJS', portfolio: @portfolio %>

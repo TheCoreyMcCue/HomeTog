@@ -5,52 +5,46 @@
         <% @favorites.each do |fav| %>
 
           <%= link_to portfolio_path(fav.portfolio), class: "index-cards" do %>
-          <div class="card entire-card decrease-card-height" id="index-cards">
-            <div class="card-product-infos">
-              <div class="d-flex">
-                <%= cl_image_tag fav.portfolio.photo.key, class:"decrease-image-size" %>
-                <div class="card-body">
+            <div class="card entire-card decrease-card-height" id="index-cards">
+              <div class="card-product-infos">
+                <div class="d-flex">
+                  <%= cl_image_tag fav.portfolio.photo.key, class:"decrease-image-size" %>
+                  <div class="card-body">
 
-                    <div class="favorite-card-content">
-                      <div class="d-flex">
-                        <h2 class="mb-3" id="index-photographer"><%= fav.portfolio.full_name %></h2>
-                        <p> <i class="fas fa-star"></i> <%= @portfolio.average_rating %> (<%= @portfolio.reviews.count%> <%= @portfolio.reviews.count > 1 ? "reviews" : "review" %>)</p>
-                        <div id="portfolio-favorites-<%= @portfolio.id %>">
-                          <% if fav.portfolio.favorited?(current_user) %>
-                            <%= link_to favorite_path(fav.portfolio.favorited?(current_user)), remote: true, class: "index-heart", id: "index-heart-favorite", method: :delete do  %>
-                              <i class="fas fa-heart pl-2" style="color: #D62839"></i>
-                            <% end %>
-                          <% else %>
-                            <%= link_to(portfolio_favorites_path(fav.portfolio), remote: true, class: "index-heart", id: "index-heart-favorite", method: :post) do %>
-                              <i class="far fa-heart pl-2" style="color: #D62839"></i>
-                            <% end %>
+                      <div class="favorite-card-content">
+                        <div class="d-flex">
+                          <h2 class="mb-3" id="index-photographer"><%= fav.portfolio.full_name %></h2>
+                          <p> <i class="fas fa-star"></i> <%= @portfolio.average_rating %> (<%= @portfolio.reviews.count%> <%= @portfolio.reviews.count > 1 ? "reviews" : "review" %>)</p>
+
+                          <div id="portfolio-favorites-<%= @portfolio.id %>" class="index-heart-favorite">
+                            <%= render 'favorites/favoriteJS', portfolio: @portfolio %>
+                          </div>
+
+                        </div>
+                        <div id="index-price"> $ <%= fav.portfolio.price %> <span class=""> /day</span></div>
+                        <p id="index-user">Listed by: <%= fav.portfolio.user.first_name %></p>
+                        <div>
+                          <%= link_to (chatroom_path(@chatroom)) do %>
+                            <i class="far fa-comment-dots"></i>
                           <% end %>
                         </div>
                       </div>
-                      <div id="index-price"> $ <%= fav.portfolio.price %> <span class=""> /day</span></div>
-                      <p id="index-user">Listed by: <%= fav.portfolio.user.first_name %></p>
-                      <div>
-                        <%= link_to (chatroom_path(@chatroom)) do %>
-                          <i class="far fa-comment-dots"></i>
+
+                      <div class=" booking-box-favorites">
+                        <h2>Book:</h2>
+                        <%= simple_form_for ([fav.portfolio, @reservation]) do |f| %>
+                        <%= f.input :date, as: :date, html5: true %>
+                        <div class="details-show-price py-2 pr-1">
+                          <h4 class="text-center" id="priceCalculator" data-price="<%= fav.portfolio.price %>">Total: $  <%= number_with_precision(fav.portfolio.price, precision: 0) %> <span>/day</span></h4>
+                        </div>
+                        <%= f.submit "Book Now", class:"btn btn-primary w-100 button-design" %>
                         <% end %>
                       </div>
-                    </div>
 
-                    <div class=" booking-box-favorites">
-                      <h2>Book:</h2>
-                      <%= simple_form_for ([fav.portfolio, @reservation]) do |f| %>
-                      <%= f.input :date, as: :date, html5: true %>
-                      <div class="details-show-price py-2 pr-1">
-                        <h4 class="text-center" id="priceCalculator" data-price="<%= fav.portfolio.price %>">Total: $  <%= number_with_precision(fav.portfolio.price, precision: 0) %> <span>/day</span></h4>
-                      </div>
-                      <%= f.submit "Book Now", class:"btn btn-primary w-100 button-design" %>
-                      <% end %>
-                    </div>
-
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           <% end %>
         <% end %>
       <% end %>
