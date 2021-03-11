@@ -13,14 +13,14 @@
             <p id="index-description"> You requested <%= res.portfolio.full_name %>`s services for <strong> <%= res.date.strftime("%B %-d, %Y") %></strong>. </p>
             <p id="index-description-approved-<%=res.id%> ">
             <% if res.approved %>
-              <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.first_name}" %> </p>
+              <p class="green-approved booking-status"> <%= "Approved by #{res.portfolio.user.first_name}" %> (<%= link_to "Remove from dashboard?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>)</p>
               <% if res.review == nil %>
                 <p> <%= link_to "Rate this Photographer", new_portfolio_reservation_review_path(res.portfolio, res)  %> </p>
               <% end %>
             <% elsif !res.approved && !res.declined %>
               <p class="yellow-waiting booking-status"> <%= "Not yet approved" %> (<%= link_to "Cancel Reservation?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>) </p>
             <% else %>
-              <p class="red-declined booking-status"> <%= "Your request was declined by #{res.portfolio.user.first_name}" %> </p>
+              <p class="red-declined booking-status"> <%= "Your request was declined by #{res.portfolio.user.first_name}" %> (<%= link_to "Remove from dashboard?", reservation_path(res), method: :delete, class: "no-hover-decoration" %>)</p>
             <% end %>
             </p>
             <div id="index-price"> $ <%= res.portfolio.price %> <span class=""> /day</span></div>
