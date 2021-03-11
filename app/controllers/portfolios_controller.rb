@@ -29,9 +29,9 @@ class PortfoliosController < ApplicationController
     authorize(@portfolio)
   end
 
-  def create
-
+  def creates
       @portfolio = Portfolio.new(portfolio_params)
+      @chatroom = Chatroom.find_or_create_by(user: current_user,portfolio: @portfolio)
       @user = current_user
       @portfolio.user = @user
       authorize @portfolio

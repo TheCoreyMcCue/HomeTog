@@ -15,7 +15,7 @@
 }
 
 .messages-box-size {
-
+  border-bottom:2px solid #f1f1f1;
 }
 
 .chat-size {
@@ -23,6 +23,7 @@
   height: 77vh;
   display: flex;
   flex-direction: column;
+  border:1px solid #f1f1f1;
 }
 
 .conversation-view-box {
@@ -41,6 +42,7 @@
   width: 100%;
   height: auto;
   padding:0px;
-  // border-radius: 10px;
+  border-radius: 10px;
   border:1px solid #f1f1f1;
+  margin-bottom: 20px;
 }
