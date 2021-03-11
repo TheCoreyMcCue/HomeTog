@@ -1,5 +1,5 @@
 <div class="container d-flex flex-column">
-  <h1 class="pb-4">Available photographers in you area</h1>
+  <h1 class="py-4 index-h1">Available photographers near you</h1>
 
   <% @portfolios.each do |portfolio| %>
     <div class=" my-3 border entire-card">
@@ -18,7 +18,7 @@
           <div class="carousel-inner">
             <% portfolio.photos.each_with_index do |photo, index|%>
               <div class="carousel-item <%= 'active' if index == 0 %>">
-                <%= cl_image_tag photo.key, class: "index-photo pr-" %>
+                <%= cl_image_tag photo.key, class: "index-photo" %>
               </div>
             <% end %>
           </div>
