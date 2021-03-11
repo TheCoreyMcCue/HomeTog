@@ -1,9 +1,9 @@
-<div class="container d-flex mt-5 message-page-size border">
+<div class="container d-flex mt-5 message-page-size">
 
 
   <div class="messages-container">
     <% @chatrooms.each do |chatroom|  %>
-    <div class=" messages-box-size d-flex flex-column border p-3 ">
+    <div class="messages-box-size d-flex flex-column p-3 ">
       <%#= chatroom.name  %>
       <div class="d-flex">
         <div>
@@ -22,9 +22,7 @@
     <% end %>
   </div>
 
-
-
-  <div class="container mb-5 border chat-size">
+  <div class="container mb-5 chat-size">
 
     <h1><%= @chatroom.name %></h1>
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>" >
@@ -42,14 +40,3 @@
     <% end %>
   </div>
 </div>
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
-
