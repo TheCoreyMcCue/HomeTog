@@ -1,0 +1,46 @@
+// avatar for message box
+
+.messages-box-avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.messages-container {
+  width: 40%;
+  height: 77vh;
+  overflow-y: scroll;
+  overflow-x: visible;
+}
+
+.messages-box-size {
+
+}
+
+.chat-size {
+  width: 60%;
+  height: 77vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.conversation-view-box {
+  height: 500px;
+}
+
+#messages {
+  height: 70%;
+  flex-grow: 1;
+  overflow-y: scroll;
+  padding-bottom: 30px;
+}
+
+
+.message-page-size {
+  width: 100%;
+  height: auto;
+  padding:0px;
+  // border-radius: 10px;
+  border:1px solid #f1f1f1;
+}
