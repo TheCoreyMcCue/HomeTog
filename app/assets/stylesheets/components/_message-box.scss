@@ -12,6 +12,7 @@
   height: 77vh;
   overflow-y: scroll;
   overflow-x: visible;
+  border-bottom:1px solid #f1f1f1 ;
 }
 
 .messages-box-size {
@@ -24,6 +25,7 @@
   display: flex;
   flex-direction: column;
   border:1px solid #f1f1f1;
+  border-top-right-radius: 10px;
 }
 
 .conversation-view-box {
@@ -50,3 +52,26 @@
 .message-container p {
   font-size: 16px;
 }
+
+.messages-size {
+  font-size: 16px;
+}
+
+.send-message-style {
+  font-size: 18px;
+  font-weight: 700;
+  color: #355070;
+  background: #fff;
+  border: 1px solid #355070;
+  padding: 5px 15px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.message-author-style {
+  font-weight: 700;
+  font-size: 16px;
+  color: #355070;
+}
+
+
