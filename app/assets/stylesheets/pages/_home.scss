@@ -20,6 +20,10 @@ p {
   height:550px;
 }
 
+.search-text {
+  border-radius: 10px 0 0 10px;
+}
+
 .card-content {
   display: flex;
   flex-direction: column;
@@ -49,6 +53,7 @@ p {
 
 .custom-btn-home-page {
   margin-left: -10px;
+  border-radius: 0 10px 10px 0px;
 }
 
 .testimony-avatar {
