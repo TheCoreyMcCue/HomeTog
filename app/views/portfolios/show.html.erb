@@ -10,7 +10,7 @@
 <!-- Here is the chatbox when clicked on the icon -->
 <%#= render "chatbox" %>
 <div class="container show_page-container">
-  <% if @chatroom %>
+  <% if @chatroom && user_signed_in? %>
     <%= link_to(chatroom_path(@chatroom)) do %>
       <i class="far fa-comment chat-box-link"> Message me!
       </i>

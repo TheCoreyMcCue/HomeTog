@@ -9,7 +9,7 @@
       <h1 class="show-page-h1"><%= @portfolio.user.full_name %></h1>
       <!-- <p class="show-page-portfolio-location"><%= @portfolio.location %></p> -->
     </div>
-    <div id="portfolio-favorites-<%= @portfolio.id %>" class="favorite-icon">
+    <div id="portfolio-favorites-<%= @portfolio.id %>" class="favorite-icon mb-2">
       <%= render 'favorites/favoriteJS', portfolio: @portfolio %>
     </div>
   </div>

@@ -1,6 +1,6 @@
 #index-cards {
   margin: 5px 0 5px 0;
-  width: 1125px;
+  // width: 1125px;
 }
 
 .index-h1 {
@@ -55,14 +55,14 @@
     transform: scale(1.3);
   }
 }
+
 .index-heart {
-
   transition: all .2s ease-in-out;
-
   &:hover {
     transform: scale(1.3);
   }
 }
+
 .index-heart-position {
 
 }
