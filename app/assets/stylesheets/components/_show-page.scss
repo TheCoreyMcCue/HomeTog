@@ -29,7 +29,7 @@
 
 .form-control:disabled {
   background: #fff;
-  border:none;
+  /*border:none;*/
 }
 
 .show-page-avatar {
@@ -57,8 +57,9 @@
   width: 950px;
 }
 
-label {
+.booking-box label {
   display: none;
+
 }
 
 .booking-box {
@@ -75,6 +76,7 @@ label {
   height: 300px;
   flex-grow: 1;
   overflow-y: scroll;
+  padding-right: 20px;
 }
 
 .chat-box-link {

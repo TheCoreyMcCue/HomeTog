@@ -1,6 +1,6 @@
 <div class="message-container" id="message-<%= message.id %>">
   <i class="author">
-    <span> Say hello to <%= message.user.full_name %></span>
+    <span class="message-author-style"><%= message.user.full_name %></span>
     <small><%= message.created_at.strftime("%B %-d, %Y") %></small>
   </i>
   <p><%= message.content %></p>

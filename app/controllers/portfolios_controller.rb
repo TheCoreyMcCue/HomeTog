@@ -29,7 +29,7 @@ class PortfoliosController < ApplicationController
     authorize(@portfolio)
   end
 
-  def creates
+  def create
       @portfolio = Portfolio.new(portfolio_params)
       @user = current_user
       @portfolio.user = @user
