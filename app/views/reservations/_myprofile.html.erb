@@ -9,8 +9,8 @@
       <div class="text-center">
       <%#= cl_image_tag @portfolio.photo.key, class: "carousel-profile-size", width: '700px', height: 'auto'%>
       <%= render "myprofile-carousel" %>
-      <p id="index-price">$ <%= @portfolio.price %> /day</p>
-      <p id="index-description"><%= @portfolio.description&.truncate(140, separator: " ") %></p>
+      <p id="my-portfolio-description"><%= @portfolio.description&.truncate(2000, separator: " ") %></p>
+      <p id="my-portfolio-price">$ <%= @portfolio.price %> /day</p>
       </div>
 
       <div class="container show_page-container mt-5">
