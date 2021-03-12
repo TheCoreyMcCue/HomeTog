@@ -43,11 +43,50 @@
 }
 
 .lower-buttons {
-  color: white;
+  color: #355070;
 }
 
 .lower-buttons:hover {
-  color: white;
+  color: #355070;
+  font-weight: 700;
   text-decoration: none;
   font-weight: bold;
+  margin:0px;
 }
+
+.login-form-inputs {
+  width: 400px;
+}
+
+
+.login-container {
+  width:500px;
+  height: 500px;
+  background: #fff;
+  margin: 50px 0px;
+  padding: 30px;
+  border-radius:20px;
+}
+
+.login-background {
+  background: linear-gradient(#355070, #EAAC88 );
+}
+
+.login-container p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
