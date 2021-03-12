@@ -13,9 +13,13 @@
 .favorite-icon {
   font-size: 26px;
   position: absolute;
-  top:-30px;
+  top:-33px;
   right: 5px;
   color: #355070;
+  transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .description-container {
@@ -45,6 +49,7 @@
   position: absolute;
   top: -40px;
   left: 110px;
+  color: black;
 }
 
 .show-page-portfolio-location {
