@@ -49,6 +49,11 @@
   position:absolute;
   z-index: 100;
   right: 240px;
+  transition: all .2s ease-in-out;
+  font-size: 25px;
+  &:hover {
+    transform: scale(1.3);
+  }
 }
 .index-heart {
 
