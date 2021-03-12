@@ -1,10 +1,12 @@
 <div class="container">
   <div class="d-flex align-items-center">
     <div class="mr-3 ">
-      <% if  @portfolio.user.photo.attached? %>
-        <%= cl_image_tag @portfolio.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
-      <% else %>
-        <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar mb-2', width: '60px', height: '60px'%>
+      <% if @portfolio %>
+        <% if  @portfolio.user.photo.attached? %>
+          <%= cl_image_tag @portfolio.user.photo.key, class: 'preview-avatar mb-2', width: '60px', height: '60px' %>
+        <% else %>
+          <%= image_tag "https://images.unsplash.com/photo-1593099295589-ee5c1aa4164f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2736&q=80", class: 'preview-avatar mb-2', width: '60px', height: '60px'%>
+        <% end %>
       <% end %>
     </div>
     <h1 class="my-5">Welcome <%= current_user.full_name %>! </h1>
