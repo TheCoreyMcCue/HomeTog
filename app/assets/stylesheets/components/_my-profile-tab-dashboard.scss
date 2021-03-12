@@ -1,0 +1,31 @@
+.carousel-portfolio-image-wrapper {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.portfolio-carousel-style {
+  border-radius: 10px;
+}
+
+#my-portfolio-price {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+  color: #355070;
+  text-align: center;
+}
+
+#my-portfolio-description {
+  font-size: 16px;
+  text-align: left;
+  margin-top: 20px;
+}
+
+@media (max-width: 575px){
+  .carousel-portfolio-image-wrapper {
+    height: 300px;
+  }
+}
+
